@@ -21,11 +21,11 @@
 
 </div>
 
-<p align="center">
-### **APLIKASI DISKON DENGAN C++**<br>
-### Pembelajaran Logika dalam Pemograman<br>
-### By. **Abdul Madjid, S.Pd., M.Pd.**
-</p>
+### <p align="center">**APLIKASI DISKON DENGAN C++**<p>
+
+### <p align="center">Pembelajaran Logika dalam Pemograman<p>
+
+### <p align="center">By. **Abdul Madjid, S.Pd., M.Pd.**</p>
 
 <a id="readme-top"></a>
 

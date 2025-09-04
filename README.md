@@ -21,6 +21,24 @@
 
 </div>
 
+<a id="readme-top"></a>
+
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li><a href="#aplikasi-diskon-awal">APLIKASI DISKON AWAL</a></li>
+    <li><a href="#tambahkan-nama-barang-dan-harga">TAMBAHKAN NAMA BARANG DAN HARGA</a></li>
+    <li><a href="#tambahkan-pilihan-diskon">PILIHAN DISKON</a></li>
+    <li><a href="#jika-tanggal-tertentu-ada-diskon">JIKA TANGGAL TERTENTU ADA DISKON</a></li>
+    <li><a href="#ubah-barang-dan-harga">UBAH BARANG DAN HARGA</a></li>
+    <li><a href="#batalkan-proses-transaksi">BATALKAN PROSES TRANSAKSI</a></li>
+    <li><a href="#simpan-hasil-transaksi">SIMPAN HASIL TRANSAKSI</a></li>
+  </ol>
+</details>
+
+---
+
 ### APLIKASI DISKON AWAL
 
 <details type="reasoning" done="true">
@@ -155,7 +173,7 @@ Harga Akhir      : Rp 212500.00
 
 ---
 
-### MENAMBAHKAN UNTUK MEMASUKKAN NAMA BARANG DAN HARGA
+### TAMBAHKAN NAMA BARANG DAN HARGA
 
 <details type="reasoning" done="true">
 <summary>Penjelasan :</summary>
@@ -421,14 +439,15 @@ Program ini menggabungkan fitur input barang dengan perhitungan diskon dalam sat
 
 ---
 
-### TAMBAHKAN PILIHAN DISKON
+### PILIHAN DISKON
 
-tambahkan pilihan otomatis di beri diskon dengan kriteria
+**Catatan :** pilihan otomatis di beri diskon dengan kriteria
 
 - 3.000.000 diskon 7 %
 - 2.000.000 diskon 5 %
 - 1.000.000 diskon 3 %
-  atau input manual diskon
+
+atau input manual diskon
 
 <details type="reasoning" done="true">
 <summary>Penjelasan :</summary>
@@ -762,11 +781,12 @@ Program ini memberikan fleksibilitas kepada pengguna untuk memilih sistem diskon
 
 ---
 
-### TAMBAHKAN JIKA TANGGAL TERTENTU ADA DISKON
+### JIKA TANGGAL TERTENTU ADA DISKON
 
-tambahkan jika tanggal hari ini tanggal 17 Agustus, maka di beri diskon 5 %,
-jadi pilihan diskon tadi tambah diskon kalau tanggal 17 Agustus.
-berikan dulu list tanggal untuk mendapatkan diskon otomatis
+**Catatan :**
+
+jika tanggal hari ini tanggal 17 Agustus, maka di beri diskon 5 %,
+jadi pilihan diskon sebelumnya lalu di tambah diskon kalau tanggal 17 Agustus.
 
 <details type="reasoning" done="true" duration="166">
 <summary>Penjelasan :</summary>
@@ -1568,8 +1588,6 @@ Program ini memberikan fleksibilitas pilihan diskon dengan tambahan diskon spesi
 
 ### UBAH BARANG DAN HARGA
 
-Tambahkan fitur mengubah jumlah barang dan harga
-
 <details type="reasoning" done="true">
 <summary>Penjelasan : </summary>
 
@@ -2001,8 +2019,6 @@ Program ini sekarang lebih lengkap dengan fitur perubahan data barang yang memun
 ---
 
 ### BATALKAN PROSES TRANSAKSI
-
-tambahkan fitur untuk di lanjutkan atau di batalkan proses transaksi.
 
 <details type="reasoning" done="true">
 <summary>Penjelasan : </summary>
@@ -2499,8 +2515,6 @@ Program ini sekarang memiliki alur transaksi yang lengkap dengan kontrol penuh k
 ---
 
 ### SIMPAN HASIL TRANSAKSI
-
-Tambahkan fitur jika tidak di batalkan maka apakah data di simpan
 
 <details type="reasoning" done="true">
 <summary>Penjelasan : </summary>

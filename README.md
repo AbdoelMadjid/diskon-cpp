@@ -2136,7 +2136,7 @@ Mari kita tambahkan fitur ini.
 </details>
 
 <details type="reasoning" done="true">
-<summary>Mari berlogika dulu: </summary>
+<summary>Hasil Implementasi </summary>
 Berikut adalah program C++ yang telah diperbarui dengan fitur penyimpanan data transaksi jika tidak dibatalkan:
 
 ```cpp

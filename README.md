@@ -10,7 +10,7 @@
 <div align="center">
   
 [![GitHub WidgetBox](https://github-widgetbox.vercel.app/api/profile?username=abdoelmadjid&data=followers,repositories,stars,commits&theme=viridescent)](https://github.com/abdoelmadjid)
-<!-- <h3 align ="center"> <strong> Let`s Code.Build & FUN </strong> </h3>  -->
+<!-- <h3 align ="center"> <strong> Let`s Code.Build & FUN </strong> </h3-->
 
 ![](https://komarev.com/ghpvc/?username=abdoelmadjid&color=brightgreen&style=for-the-badge)
 [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/abdoelmadjid/)
@@ -24,7 +24,7 @@
 ## APLIKASI DISKON AWAL
 
 <details type="reasoning" done="true" duration="3">
-<summary>Thought for 3 seconds</summary>
+<summary>Mari kita mulai :</summary>
 Kita akan membuat program C++ sederhana untuk menghitung diskon.  
 Program ini akan meminta input dari pengguna berupa harga asli dan persentase diskon.  
 Kemudian, program akan menghitung harga setelah diskon dan menampilkannya.
@@ -149,19 +149,12 @@ Harga Akhir      : Rp 212500.00
 3. **Error Handling**:
    - Program keluar dengan kode error jika input tidak valid
 
-Program ini dapat dikembangkan lebih lanjut dengan:
-
-- Penambahan pajak
-- Sistem membership diskon
-- Perhitungan untuk multiple item
-- Penyimpanan data transaksi
-
 ---
 
 ## MENAMBAHKAN UNTUK MEMASUKKAN NAMA BARANG DAN HARGA
 
 <details type="reasoning" done="true" duration="7">
-<summary>Thought for 7 seconds</summary>
+<summary>Gimana ya buatnya :</summary>
 Kita akan memodifikasi program sebelumnya dengan menambahkan fitur:
 
 1. Memasukkan beberapa barang (nama barang dan harga per barang)
@@ -428,7 +421,7 @@ tambahkan pilihan otomatis di beri diskon dengan kriteria
   atau input manual diskon
 
 <details type="reasoning" done="true" duration="6">
-<summary>Thought for 6 seconds</summary>
+<summary>Berpikir logika dulu sebenera :</summary>
 Kita akan menambahkan fitur pilihan diskon otomatis berdasarkan total pembelian atau input manual.
 
 ### Langkah-langkah:
@@ -448,7 +441,7 @@ Kita akan memodifikasi bagian setelah menampilkan total pembelian.
 
 - Setelah menampilkan total pembelian, kita beri pilihan:
 
-```cpp
+```console
   cout << "\nPilih jenis diskon:\n";
   cout << "1. Otomatis (berdasarkan total pembelian)\n";
   cout << "2. Manual (input persentase)\n";
@@ -760,374 +753,411 @@ jadi pilihan diskon tadi tambah diskon kalau tanggal 17 Agustus.
 berikan dulu list tanggal untuk mendapatkan diskon otomatis
 
 <details type="reasoning" done="true" duration="166">
-<summary>Thought for 166 seconds</summary>
-> Kita akan menambahkan fitur diskon otomatis berdasarkan tanggal tertentu (misalnya 17 Agustus). 
->  Langkah-langkah:
->  1. Tambahkan pilihan diskon otomatis berdasarkan tanggal (misalnya 17 Agustus) dengan diskon 5%.
->  2. Sebelum pilihan diskon, tampilkan dulu daftar tanggal yang mendapatkan diskon otomatis (dalam hal ini hanya 17 Agustus).
->  3. Jika hari ini adalah tanggal 17 Agustus, maka tambahkan opsi diskon otomatis 5% (atau bisa juga langsung diterapkan?).
->  4. Namun, dalam permintaan, kita diminta untuk menambahkan diskon 5% jika tanggal 17 Agustus, jadi kita bisa:
->     - Menambahkan opsi ketiga: "3. Diskon Spesial 17 Agustus (5%)"
->     - Atau, jika tanggal 17 Agustus, maka otomatis diskon 5% ditambahkan ke diskon yang ada? 
->     Tapi dari permintaan: "tambahkan jika tanggal hari ini tanggal 17 Agustus, maka di beri diskon 5 %", 
->     dan "jadi pilihan diskon tadi tambah diskon kalau tanggal 17 Agustus".
-> 
->     Saya interpretasikan: 
->     - Jika tanggal 17 Agustus, maka ada opsi diskon tambahan yaitu 5% (diskon spesial).
->     - Jadi pilihan diskon menjadi:
->         1. Otomatis (berdasarkan total pembelian)
->         2. Manual (input persentase)
->         3. Diskon Spesial 17 Agustus (5%)   [hanya muncul jika tanggal 17 Agustus]
-> 
->     Namun, bagaimana jika kita ingin menggabungkan? Misalnya diskon otomatis (berdasarkan total) dan diskon 17 Agustus?
->     Permintaan tidak spesifik. Saya asumsikan bahwa diskon 17 Agustus adalah opsi terpisah.
-> 
->     Alternatif lain: 
->     - Jika tanggal 17 Agustus, maka diskon otomatis (berdasarkan total) akan ditambah 5%? 
->     Tapi itu bisa membuat diskon menjadi 12% (jika total>=3jt) atau 10% (jika total>=2jt) dst.
-> 
->     Namun, dari kalimat: "tambahkan jika tanggal hari ini tanggal 17 Agustus, maka di beri diskon 5 %", 
->     sepertinya diskon 5% ini adalah diskon tambahan yang berlaku di tanggal tersebut, bukan menggantikan.
-> 
->     Tapi permintaan selanjutnya: "jadi pilihan diskon tadi tambah diskon kalau tanggal 17 Agustus", 
->     artinya kita menambahkan opsi diskon baru.
-> 
->     Jadi, kita akan:
->     - Mengecek tanggal hari ini (dalam program, kita bisa hardcode dulu untuk testing, tapi nanti bisa diubah ke input atau sistem)
->     - Jika tanggal 17 Agustus, maka tampilkan opsi ketiga: "3. Diskon Spesial 17 Agustus (5%)"
->     - Jika user memilih opsi 3, maka diskon yang diberikan adalah 5%.
-> 
->     Namun, bagaimana jika user ingin diskon otomatis (berdasarkan total) dan juga diskon 17 Agustus? 
->     Permintaan tidak menyebutkan, jadi kita buat opsi terpisah.
-> 
->     Tapi, mungkin lebih baik jika diskon 17 Agustus adalah tambahan dari diskon yang ada? 
->     Misalnya: jika tanggal 17 Agustus, maka diskon otomatis (berdasarkan total) akan ditambah 5%? 
->     Atau diskon 17 Agustus berlaku sebagai diskon tunggal?
-> 
->     Karena permintaan tidak jelas, saya akan buat dua skenario:
-> 
->     Skenario 1 (sesuai permintaan awal): 
->         - Menambah opsi diskon baru: "Diskon Spesial 17 Agustus (5%)" yang hanya muncul jika tanggal 17 Agustus.
-> 
->     Skenario 2 (alternatif): 
->         - Jika tanggal 17 Agustus, maka diskon otomatis (berdasarkan total) akan ditambah 5% (jadi diskon total = diskon otomatis + 5%).
-> 
->     Namun, dari kalimat: "tambahkan jika tanggal hari ini tanggal 17 Agustus, maka di beri diskon 5 %", 
->     dan "jadi pilihan diskon tadi tambah diskon kalau tanggal 17 Agustus", saya pilih Skenario 1: opsi terpisah.
-> 
->     Tapi, untuk lebih fleksibel, mungkin kita bisa buat:
-> 
->     Opsi diskon:
->         1. Diskon Otomatis (berdasarkan total pembelian)
->         2. Diskon Manual
->         3. Diskon Spesial 17 Agustus (5%)   [hanya muncul jika tanggal 17 Agustus]
-> 
->     Dan jika user memilih opsi 1, maka diskon otomatis berdasarkan total, tanpa tambahan 5% (kecuali jika kita ingin menggabungkan, tapi tidak).
-> 
->     Atau, kita bisa buat: jika tanggal 17 Agustus, maka diskon otomatis (berdasarkan total) akan ditambah 5%? 
->     Itu berarti diskon total = diskon otomatis + 5%. 
-> 
->     Tapi permintaan: "tambahkan diskon kalau tanggal 17 Agustus", artinya menambah diskon, bukan mengganti.
-> 
->     Jadi, saya akan buat:
->         - Jika tanggal 17 Agustus, maka diskon yang diberikan adalah diskon otomatis (berdasarkan total) DITAMBAH 5%? 
->         - Atau diskon 5% sebagai diskon tambahan setelah diskon otomatis?
-> 
->     Ini perlu klarifikasi. Tapi karena tidak ada, saya akan buat sesuai permintaan: 
->         "tambahkan jika tanggal hari ini tanggal 17 Agustus, maka di beri diskon 5 %"
-> 
->     Artinya, di tanggal 17 Agustus, customer mendapat diskon 5% (selain diskon yang mungkin sudah ada?).
-> 
->     Namun, dalam program sebelumnya, diskon hanya satu (baik otomatis atau manual). 
-> 
->     Saya putuskan: 
->         - Jika tanggal 17 Agustus, maka kita akan menambahkan opsi diskon ketiga: "3. Diskon Spesial 17 Agustus (5%)" 
->           yang memberikan diskon 5% (menggantikan diskon otomatis/manual).
-> 
->     Tapi, bagaimana jika kita ingin diskon otomatis dan diskon 17 Agustus berlaku bersamaan? 
->     Itu berarti diskon total = diskon otomatis + 5%. 
-> 
->     Saya rasa ini lebih masuk akal. Jadi, jika tanggal 17 Agustus, maka diskon yang diberikan adalah:
->         diskon_total = diskon_otomatis (berdasarkan total) + 5%
-> 
->     Atau, diskon 5% diberikan setelah diskon otomatis? 
-> 
->     Contoh: 
->         Total = 3.500.000
->         Diskon otomatis = 7% (karena >=3jt) -> 245.000
->         Diskon 17 Agustus = 5% dari total awal? atau dari sisa setelah diskon otomatis? 
-> 
->     Biasanya, diskon bertingkat: 
->         - Diskon otomatis dulu, lalu diskon 17 Agustus dari sisa setelah diskon otomatis? 
->         - Atau diskon 17 Agustus dari total awal, lalu diskon otomatis dari sisa? 
-> 
->     Saya asumsikan diskon 17 Agustus adalah tambahan diskon dari total awal, jadi:
->         diskon_total = (diskon_otomatis + diskon_17_agustus) % dari total awal.
-> 
->     Tapi, itu berarti diskon total = 7% + 5% = 12% dari total awal.
-> 
->     Atau, bisa juga diskon 17 Agustus diberikan setelah diskon otomatis, jadi:
->         Setelah diskon otomatis: total = 3.500.000 - 245.000 = 3.255.000
->         Lalu diskon 5% dari 3.255.000 = 162.750
->         Total akhir = 3.255.000 - 162.750 = 3.092.250
-> 
->     Ini lebih umum (diskon bertingkat).
-> 
->     Tapi permintaan tidak spesifik. 
-> 
->     Saya akan buat dua opsi:
-> 
->     Opsi 1: Diskon 17 Agustus sebagai diskon tambahan yang dihitung dari total awal, jadi diskon total = diskon otomatis + 5% (dari total awal).
-> 
->     Opsi 2: Diskon 17 Agustus sebagai diskon kedua yang dihitung setelah diskon otomatis.
-> 
->     Namun, untuk kesederhanaan, saya pilih Opsi 1: diskon total = diskon otomatis + 5% (dari total awal).
-> 
->     Tapi, bagaimana jika user memilih diskon manual? 
->     Jika tanggal 17 Agustus, maka diskon manual juga akan ditambah 5%? 
-> 
->     Permintaan: "tambahkan diskon kalau tanggal 17 Agustus", artinya di tanggal 17 Agustus, customer selalu dapat tambahan 5%, 
->     terlepas dari diskon yang dipilih (otomatis atau manual).
-> 
->     Jadi, saya akan buat:
->         - Jika tanggal 17 Agustus, maka diskon yang diberikan adalah:
->             diskon_total = diskon_dipilih (otomatis/manual) + 5% (dari total awal)
-> 
->     Tapi, ini berarti diskon total bisa lebih dari 100%? 
-> 
->     Alternatif: diskon 17 Agustus adalah diskon wajib yang diberikan setelah diskon yang dipilih.
-> 
->     Saya putuskan: 
->         - Jika tanggal 17 Agustus, maka setelah diskon (otomatis/manual) diterapkan, akan diberikan diskon tambahan 5% dari total awal.
-> 
->     Jadi:
->         total_setelah_diskon1 = total_awal - (diskon1)
->         total_setelah_diskon2 = total_setelah_diskon1 - (5% * total_awal)
-> 
->     Atau, bisa juga:
->         total_setelah_diskon2 = total_awal - (diskon1 + 5% * total_awal)
-> 
->     Sama saja.
-> 
->     Tapi, bagaimana jika user memilih diskon manual 50% dan tanggal 17 Agustus? 
->     Maka diskon total = 50% + 5% = 55% dari total awal.
-> 
->     Ini bisa diterima.
-> 
->     Jadi, perubahan:
->         - Jika tanggal 17 Agustus, maka setelah diskon (otomatis/manual) dihitung, kita tambahkan diskon 5% dari total awal.
-> 
->     Tapi, permintaan: "tambahkan jika tanggal hari ini tanggal 17 Agustus, maka di beri diskon 5 %", 
->     dan "jadi pilihan diskon tadi tambah diskon kalau tanggal 17 Agustus".
-> 
->     Artinya, diskon 5% ini adalah tambahan dari diskon yang sudah ada.
-> 
->     Jadi, kita tidak perlu mengubah pilihan, tapi secara otomatis menambahkan diskon 5% di akhir.
-> 
->     Langkah:
->         1. Hitung diskon sesuai pilihan (otomatis/manual) -> diskon1
->         2. Jika tanggal 17 Agustus, maka diskon2 = 5% * total_awal
->         3. Total diskon = diskon1 + diskon2
->         4. Total akhir = total_awal - total_diskon
-> 
->     Tapi, bagaimana jika diskon1 sudah 100%? maka total akhir bisa negatif? 
-> 
->     Kita perlu validasi: total diskon tidak boleh lebih dari total awal.
-> 
->     Jadi, kita tambahkan validasi: jika total_diskon > total_awal, maka total_diskon = total_awal.
-> 
->     Namun, dalam program ini, kita asumsikan diskon tidak akan melebihi 100%.
-> 
->     Tapi, untuk aman, kita tambahkan validasi.
-> 
->     Jadi, rencana:
-> 
->     1. Tambahkan pengecekan tanggal (untuk sekarang, kita hardcode tanggal 17 Agustus, tapi nanti bisa diubah ke input atau sistem).
->     2. Jika tanggal 17 Agustus, maka setelah menghitung diskon sesuai pilihan (otomatis/manual), kita tambahkan diskon 5% dari total awal.
->     3. Tampilkan rincian: diskon1 (otomatis/manual) dan diskon2 (5% khusus 17 Agustus).
-> 
->     Tapi, permintaan juga: "berikan dulu list tanggal untuk mendapatkan diskon otomatis"
-> 
->     Artinya, sebelum pilihan diskon, kita tampilkan daftar tanggal yang mendapat diskon otomatis (dalam hal ini hanya 17 Agustus).
-> 
->     Jadi, kita tambahkan:
-> 
->         cout << "\nDaftar tanggal diskon otomatis:" << endl;
->         cout << "- 17 Agustus (diskon 5% tambahan)" << endl;
-> 
->     Tapi, diskon otomatis di sini bukan berarti menggantikan, tapi tambahan.
-> 
->     Jadi, kita tampilkan bahwa di tanggal 17 Agustus akan ada diskon tambahan 5%.
-> 
->     Namun, dalam program, diskon otomatis yang pertama (berdasarkan total) tetap ada, dan di 17 Agustus ada tambahan 5%.
-> 
->     Jadi, kita tampilkan:
-> 
->         cout << "\nDaftar tanggal diskon otomatis:" << endl;
->         cout << "1. 17 Agustus -> Tambahan diskon 5%" << endl;
-> 
->     Tapi, ini bukan diskon otomatis yang menggantikan, melainkan tambahan.
-> 
->     Saya rasa lebih baik kita tampilkan:
-> 
->         cout << "\nInformasi Diskon Tambahan:" << endl;
->         cout << "Hari ini: 17 Agustus -> Anda akan mendapatkan diskon tambahan 5%" << endl;
-> 
->     Tapi, bagaimana jika bukan 17 Agustus? maka tidak ditampilkan.
-> 
->     Jadi, kita cek dulu tanggal hari ini.
-> 
->     Untuk testing, kita hardcode tanggal 17 Agustus.
-> 
->     Implementasi:
-> 
->         // Untuk testing, kita set tanggal hari ini
->         int hari = 17, bulan = 8; // Agustus
-> 
->         // Jika ingin menggunakan tanggal sistem, bisa menggunakan <ctime>
->         // Tapi untuk sederhana, kita hardcode dulu.
-> 
->         if (hari == 17 && bulan == 8) {
->             cout << "\nInformasi Diskon Tambahan:" << endl;
->             cout << "Selamat! Hari ini 17 Agustus, Anda mendapatkan diskon tambahan 5%" << endl;
->         }
-> 
->     Kemudian, setelah menghitung diskon sesuai pilihan, kita tambahkan:
-> 
->         double diskonTambahan = 0;
->         if (hari == 17 && bulan == 8) {
->             diskonTambahan = totalHarga * 0.05;
->         }
-> 
->         jumlahDiskon = diskon1 + diskonTambahan; // diskon1 adalah diskon dari pilihan (otomatis/manual)
-> 
->         // Validasi agar total diskon tidak melebihi totalHarga
->         if (jumlahDiskon > totalHarga) {
->             jumlahDiskon = totalHarga;
->         }
-> 
->         hargaSetelahDiskon = totalHarga - jumlahDiskon;
-> 
->     Dan di tampilan akhir, kita tampilkan dua diskon jika ada.
-> 
->     Tapi, bagaimana dengan pilihan diskon? 
->     Pilihan diskon tetap ada (otomatis/manual) dan di 17 Agustus ada tambahan 5%.
-> 
->     Jadi, kita tidak mengubah pilihan, hanya menambahkan diskon di akhir.
-> 
->     Ini sesuai permintaan: "tambahkan diskon kalau tanggal 17 Agustus".
-> 
->     Jadi, perubahan:
-> 
->         - Sebelum pilihan diskon, tampilkan informasi jika hari ini 17 Agustus (diskon tambahan 5%).
->         - Setelah menghitung diskon sesuai pilihan, tambahkan diskon 5% (jika 17 Agustus).
->         - Tampilkan rincian diskon: diskon pilihan dan diskon tambahan (jika ada).
-> 
->     Namun, permintaan juga: "berikan dulu list tanggal untuk mendapatkan diskon otomatis"
-> 
->     Artinya, kita harus tampilkan daftar tanggal yang dapat diskon otomatis (dalam hal ini 17 Agustus) sebelum pilihan diskon.
-> 
->     Jadi, kita tampilkan:
-> 
->         cout << "\nDaftar tanggal diskon otomatis:" << endl;
->         cout << "17 Agustus" << endl;
-> 
->     Tapi, ini hanya satu tanggal. Untuk fleksibilitas, kita bisa buat vector, tapi untuk sederhana, kita tampilkan hardcode.
-> 
->     Jadi, langkah:
-> 
->         1. Setelah menampilkan total pembelian, sebelum pilihan diskon:
->             cout << "\nDaftar tanggal diskon otomatis:" << endl;
->             cout << "- 17 Agustus" << endl;
-> 
->         2. Jika hari ini 17 Agustus, tampilkan tambahan informasi.
-> 
->     Tapi, daftar tanggal diskon otomatis ini tetap ditampilkan meskipun bukan 17 Agustus? 
->     Ya, sebagai informasi.
-> 
->     Jadi, kita tampilkan selalu.
-> 
->     Tapi, diskon otomatis di sini bukan berarti diskon yang diberikan otomatis tanpa pilihan, 
->     melainkan diskon tambahan yang otomatis diberikan di tanggal tersebut.
-> 
->     Jadi, kita tampilkan:
-> 
->         cout << "\nDaftar tanggal diskon otomatis (tambahan):" << endl;
->         cout << "17 Agustus" << endl;
-> 
->     Lalu, jika hari ini 17 Agustus, kita beri tahu bahwa diskon tambahan akan diberikan.
-> 
->     Implementasi:
-> 
->         // Setelah total pembelian
->         cout << "\n======================================" << endl;
->         cout << "      INFORMASI DISKON OTOMATIS       " << endl;
->         cout << "======================================" << endl;
->         cout << "Daftar tanggal diskon otomatis (tambahan):" << endl;
->         cout << "- 17 Agustus" << endl;
-> 
->         // Cek tanggal
->         int hari = 17, bulan = 8; // hardcode untuk testing
->         bool isTanggalDiskon = (hari == 17 && bulan == 8);
-> 
->         if (isTanggalDiskon) {
->             cout << "\nHari ini 17 Agustus! Anda akan mendapatkan diskon tambahan 5%" << endl;
->         }
-> 
->         cout << "======================================" << endl;
-> 
->         // Lanjut ke pilihan diskon
-> 
->     Kemudian, setelah menghitung diskon1 (dari pilihan), kita hitung diskon tambahan jika isTanggalDiskon.
-> 
->     Di tampilan akhir, kita tampilkan:
-> 
->         cout << left << setw(25) << "Total Pembelian" 
->              << right << setw(15) << fixed << setprecision(2) << totalHarga << endl;
->         cout << left << setw(25) << "Diskon " << (pilihanDiskon==1?"Otomatis":"Manual") 
->              << right << setw(15) << diskon1 << endl;
->         if (isTanggalDiskon) {
->             cout << left << setw(25) << "Diskon Tambahan (17 Agustus)" 
->                  << right << setw(15) << diskonTambahan << endl;
->         }
->         cout << "--------------------------------------" << endl;
->         cout << left << setw(25) << "Total Diskon" 
->              << right << setw(15) << jumlahDiskon << endl;
->         cout << left << setw(25) << "TOTAL YANG HARUS DIBAYAR" 
->              << right << setw(15) << hargaSetelahDiskon << endl;
-> 
->     Tapi, perhatikan: diskon1 adalah diskon yang dihitung dari pilihan (otomatis/manual), 
->     dan diskonTambahan adalah 5% dari totalHarga.
-> 
->     Jadi, total diskon = diskon1 + diskonTambahan.
-> 
->     Namun, jika diskon1 sudah 100%, maka diskonTambahan tidak akan diberikan? 
->     Tidak, kita berikan, tapi kita batasi total diskon tidak melebihi totalHarga.
-> 
->     Validasi:
-> 
->         if (jumlahDiskon > totalHarga) {
->             jumlahDiskon = totalHarga;
->             hargaSetelahDiskon = 0;
->         }
-> 
->     Tapi, di tampilan, kita tetap tampilkan diskonTambahan meskipun total diskon dibatasi.
-> 
->     Alternatif: kita hitung diskonTambahan setelah diskon1, tapi dari sisa? 
->     Tapi permintaan: diskon 5% dari total awal.
-> 
->     Jadi, kita hitung diskonTambahan = 0.05 * totalHarga, lalu tambahkan ke diskon1.
-> 
->     Dan batasi total diskon tidak melebihi totalHarga.
-> 
->     Sekarang, kita ubah program.
-> 
->     Catatan: Untuk testing, kita hardcode tanggal 17 Agustus. 
->     Jika ingin menggunakan tanggal sistem, bisa menggunakan <ctime> dan struct tm.
-> 
->     Tapi, untuk kesederhanaan, kita hardcode.
-> 
->     Mari kita implementasikan.
+<summary>Berfikir logika sedikit dulu :</summary>
+Kita akan menambahkan fitur diskon otomatis berdasarkan tanggal tertentu (misalnya 17 Agustus). 
+Langkah-langkah:
+1. Tambahkan pilihan diskon otomatis berdasarkan tanggal (misalnya 17 Agustus) dengan diskon 5%.
+2. Sebelum pilihan diskon, tampilkan dulu daftar tanggal yang mendapatkan diskon otomatis (dalam hal ini hanya 17 Agustus).
+3. Jika hari ini adalah tanggal 17 Agustus, maka tambahkan opsi diskon otomatis 5% (atau bisa juga langsung diterapkan?).
+4. Namun, dalam permintaan, kita diminta untuk menambahkan diskon 5% jika tanggal 17 Agustus, jadi kita bisa:
+   - Menambahkan opsi ketiga: "3. Diskon Spesial 17 Agustus (5%)"
+   - Atau, jika tanggal 17 Agustus, maka otomatis diskon 5% ditambahkan ke diskon yang ada? 
+   Tapi dari permintaan: "tambahkan jika tanggal hari ini tanggal 17 Agustus, maka di beri diskon 5 %", 
+   dan "jadi pilihan diskon tadi tambah diskon kalau tanggal 17 Agustus".
+
+Saya interpretasikan:
+
+- Jika tanggal 17 Agustus, maka ada opsi diskon tambahan yaitu 5% (diskon spesial).
+- Jadi pilihan diskon menjadi:
+  1.  Otomatis (berdasarkan total pembelian)
+  2.  Manual (input persentase)
+  3.  Diskon Spesial 17 Agustus (5%) [hanya muncul jika tanggal 17 Agustus]
+
+Namun, bagaimana jika kita ingin menggabungkan? Misalnya diskon otomatis (berdasarkan total) dan diskon 17 Agustus?
+Permintaan tidak spesifik. Saya asumsikan bahwa diskon 17 Agustus adalah opsi terpisah.
+
+Alternatif lain:
+
+- Jika tanggal 17 Agustus, maka diskon otomatis (berdasarkan total) akan ditambah 5%?
+  Tapi itu bisa membuat diskon menjadi 12% (jika total>=3jt) atau 10% (jika total>=2jt) dst.
+
+Namun, dari kalimat: "tambahkan jika tanggal hari ini tanggal 17 Agustus, maka di beri diskon 5 %",
+sepertinya diskon 5% ini adalah diskon tambahan yang berlaku di tanggal tersebut, bukan menggantikan.
+
+Tapi permintaan selanjutnya: "jadi pilihan diskon tadi tambah diskon kalau tanggal 17 Agustus",
+artinya kita menambahkan opsi diskon baru.
+
+Jadi, kita akan:
+
+- Mengecek tanggal hari ini (dalam program, kita bisa hardcode dulu untuk testing, tapi nanti bisa diubah ke input atau sistem)
+- Jika tanggal 17 Agustus, maka tampilkan opsi ketiga: "3. Diskon Spesial 17 Agustus (5%)"
+- Jika user memilih opsi 3, maka diskon yang diberikan adalah 5%.
+
+Namun, bagaimana jika user ingin diskon otomatis (berdasarkan total) dan juga diskon 17 Agustus?
+Permintaan tidak menyebutkan, jadi kita buat opsi terpisah.
+
+Tapi, mungkin lebih baik jika diskon 17 Agustus adalah tambahan dari diskon yang ada?
+Misalnya: jika tanggal 17 Agustus, maka diskon otomatis (berdasarkan total) akan ditambah 5%?
+Atau diskon 17 Agustus berlaku sebagai diskon tunggal?
+
+Karena permintaan tidak jelas, saya akan buat dua skenario:
+
+Skenario 1 :
+(sesuai permintaan awal): - Menambah opsi diskon baru: "Diskon Spesial 17 Agustus (5%)" yang hanya muncul jika tanggal 17 Agustus.
+
+Skenario 2 :
+(alternatif): - Jika tanggal 17 Agustus, maka diskon otomatis (berdasarkan total) akan ditambah 5% (jadi diskon total = diskon otomatis + 5%).
+
+Namun, dari kalimat: "tambahkan jika tanggal hari ini tanggal 17 Agustus, maka di beri diskon 5 %",
+dan "jadi pilihan diskon tadi tambah diskon kalau tanggal 17 Agustus", saya pilih Skenario 1: opsi terpisah.
+
+Tapi, untuk lebih fleksibel, mungkin kita bisa buat:
+
+Opsi diskon: 1. Diskon Otomatis (berdasarkan total pembelian) 2. Diskon Manual 3. Diskon Spesial 17 Agustus (5%) [hanya muncul jika tanggal 17 Agustus]
+
+Dan jika user memilih opsi 1, maka diskon otomatis berdasarkan total, tanpa tambahan 5% (kecuali jika kita ingin menggabungkan, tapi tidak).
+
+Atau, kita bisa buat: jika tanggal 17 Agustus, maka diskon otomatis (berdasarkan total) akan ditambah 5%?
+Itu berarti diskon total = diskon otomatis + 5%.
+
+Tapi permintaan: "tambahkan diskon kalau tanggal 17 Agustus", artinya menambah diskon, bukan mengganti.
+
+Jadi, saya akan buat: - Jika tanggal 17 Agustus, maka diskon yang diberikan adalah diskon otomatis (berdasarkan total) DITAMBAH 5%? - Atau diskon 5% sebagai diskon tambahan setelah diskon otomatis?
+
+Ini perlu klarifikasi. Tapi karena tidak ada, saya akan buat sesuai permintaan:
+"tambahkan jika tanggal hari ini tanggal 17 Agustus, maka di beri diskon 5 %"
+
+Artinya, di tanggal 17 Agustus, customer mendapat diskon 5% (selain diskon yang mungkin sudah ada?).
+
+Namun, dalam program sebelumnya, diskon hanya satu (baik otomatis atau manual).
+
+Saya putuskan: - Jika tanggal 17 Agustus, maka kita akan menambahkan opsi diskon ketiga: "3. Diskon Spesial 17 Agustus (5%)"
+yang memberikan diskon 5% (menggantikan diskon otomatis/manual).
+
+Tapi, bagaimana jika kita ingin diskon otomatis dan diskon 17 Agustus berlaku bersamaan?
+Itu berarti diskon total = diskon otomatis + 5%.
+
+Saya rasa ini lebih masuk akal. Jadi, jika tanggal 17 Agustus, maka diskon yang diberikan adalah:
+diskon_total = diskon_otomatis (berdasarkan total) + 5%
+
+Atau, diskon 5% diberikan setelah diskon otomatis?
+
+Contoh:
+
+```console
+Total = 3.500.000
+Diskon otomatis = 7% (karena >=3jt) -> 245.000
+Diskon 17 Agustus = 5% dari total awal? atau dari sisa setelah diskon otomatis?
+```
+
+Biasanya, diskon bertingkat: - Diskon otomatis dulu, lalu diskon 17 Agustus dari sisa setelah diskon otomatis? - Atau diskon 17 Agustus dari total awal, lalu diskon otomatis dari sisa?
+
+Saya asumsikan diskon 17 Agustus adalah tambahan diskon dari total awal, jadi:
+
+```console
+diskon_total = (diskon_otomatis + diskon_17_agustus) % dari total awal.
+```
+
+Tapi, itu berarti diskon total = 7% + 5% = 12% dari total awal.
+
+Atau, bisa juga diskon 17 Agustus diberikan setelah diskon otomatis, jadi:
+
+```console
+Setelah diskon otomatis: total = 3.500.000 - 245.000 = 3.255.000
+Lalu diskon 5% dari 3.255.000 = 162.750
+Total akhir = 3.255.000 - 162.750 = 3.092.250
+```
+
+Ini lebih umum (diskon bertingkat).
+
+Tapi permintaan tidak spesifik.
+
+Saya akan buat dua opsi:
+
+```console
+Opsi 1:
+Diskon 17 Agustus sebagai diskon tambahan yang dihitung dari total awal, jadi diskon total = diskon otomatis + 5% (dari total awal).
+
+Opsi 2:
+Diskon 17 Agustus sebagai diskon kedua yang dihitung setelah diskon otomatis.
+```
+
+Namun, untuk kesederhanaan, saya pilih Opsi 1: diskon total = diskon otomatis + 5% (dari total awal).
+
+Tapi, bagaimana jika user memilih diskon manual?
+Jika tanggal 17 Agustus, maka diskon manual juga akan ditambah 5%?
+
+Permintaan: "tambahkan diskon kalau tanggal 17 Agustus", artinya di tanggal 17 Agustus, customer selalu dapat tambahan 5%,
+terlepas dari diskon yang dipilih (otomatis atau manual).
+
+Jadi, saya akan buat: - Jika tanggal 17 Agustus, maka diskon yang diberikan adalah:
+
+```console
+diskon_total = diskon_dipilih (otomatis/manual) + 5% (dari total awal)
+```
+
+Tapi, ini berarti diskon total bisa lebih dari 100%?
+
+Alternatif: diskon 17 Agustus adalah diskon wajib yang diberikan setelah diskon yang dipilih.
+
+Saya putuskan: - Jika tanggal 17 Agustus, maka setelah diskon (otomatis/manual) diterapkan, akan diberikan diskon tambahan 5% dari total awal.
+
+Jadi:
+
+```console
+total_setelah_diskon1 = total_awal - (diskon1)
+total_setelah_diskon2 = total_setelah_diskon1 - (5% \* total_awal)
+```
+
+Atau, bisa juga:
+
+```console
+total_setelah_diskon2 = total_awal - (diskon1 + 5% \* total_awal)
+```
+
+Sama saja.
+
+Tapi, bagaimana jika user memilih diskon manual 50% dan tanggal 17 Agustus?
+Maka diskon total = 50% + 5% = 55% dari total awal.
+
+Ini bisa diterima.
+
+Jadi, perubahan: - Jika tanggal 17 Agustus, maka setelah diskon (otomatis/manual) dihitung, kita tambahkan diskon 5% dari total awal.
+
+Tapi, permintaan: "tambahkan jika tanggal hari ini tanggal 17 Agustus, maka di beri diskon 5 %",
+dan "jadi pilihan diskon tadi tambah diskon kalau tanggal 17 Agustus".
+
+Artinya, diskon 5% ini adalah tambahan dari diskon yang sudah ada.
+
+Jadi, kita tidak perlu mengubah pilihan, tapi secara otomatis menambahkan diskon 5% di akhir.
+
+```console
+Langkah:
+1. Hitung diskon sesuai pilihan (otomatis/manual) -> diskon1
+2. Jika tanggal 17 Agustus, maka diskon2 = 5% \* total_awal
+3. Total diskon = diskon1 + diskon2 4. Total akhir = total_awal - total_diskon
+```
+
+Tapi, bagaimana jika diskon1 sudah 100%? maka total akhir bisa negatif?
+
+Kita perlu validasi: total diskon tidak boleh lebih dari total awal.
+
+Jadi, kita tambahkan validasi: jika total_diskon > total_awal, maka total_diskon = total_awal.
+
+Namun, dalam program ini, kita asumsikan diskon tidak akan melebihi 100%.
+
+Tapi, untuk aman, kita tambahkan validasi.
+
+Jadi, rencana:
+
+1.  Tambahkan pengecekan tanggal (untuk sekarang, kita hardcode tanggal 17 Agustus, tapi nanti bisa diubah ke input atau sistem).
+2.  Jika tanggal 17 Agustus, maka setelah menghitung diskon sesuai pilihan (otomatis/manual), kita tambahkan diskon 5% dari total awal.
+3.  Tampilkan rincian: diskon1 (otomatis/manual) dan diskon2 (5% khusus 17 Agustus).
+
+Tapi, permintaan juga: "berikan dulu list tanggal untuk mendapatkan diskon otomatis"
+
+Artinya, sebelum pilihan diskon, kita tampilkan daftar tanggal yang mendapat diskon otomatis (dalam hal ini hanya 17 Agustus).
+
+Jadi, kita tambahkan:
+
+```console
+       cout << "\nDaftar tanggal diskon otomatis:" << endl;
+       cout << "- 17 Agustus (diskon 5% tambahan)" << endl;
+```
+
+Tapi, diskon otomatis di sini bukan berarti menggantikan, tapi tambahan.
+
+Jadi, kita tampilkan bahwa di tanggal 17 Agustus akan ada diskon tambahan 5%.
+
+Namun, dalam program, diskon otomatis yang pertama (berdasarkan total) tetap ada, dan di 17 Agustus ada tambahan 5%.
+
+Jadi, kita tampilkan:
+
+```console
+       cout << "\nDaftar tanggal diskon otomatis:" << endl;
+       cout << "1. 17 Agustus -> Tambahan diskon 5%" << endl;
+```
+
+Tapi, ini bukan diskon otomatis yang menggantikan, melainkan tambahan.
+
+Saya rasa lebih baik kita tampilkan:
+
+```console
+       cout << "\nInformasi Diskon Tambahan:" << endl;
+       cout << "Hari ini: 17 Agustus -> Anda akan mendapatkan diskon tambahan 5%" << endl;
+```
+
+Tapi, bagaimana jika bukan 17 Agustus? maka tidak ditampilkan.
+
+Jadi, kita cek dulu tanggal hari ini.
+
+Untuk testing, kita hardcode tanggal 17 Agustus.
+
+Implementasi:
+
+```console
+       // Untuk testing, kita set tanggal hari ini
+       int hari = 17, bulan = 8; // Agustus
+
+       // Jika ingin menggunakan tanggal sistem, bisa menggunakan <ctime>
+       // Tapi untuk sederhana, kita hardcode dulu.
+
+       if (hari == 17 && bulan == 8) {
+           cout << "\nInformasi Diskon Tambahan:" << endl;
+           cout << "Selamat! Hari ini 17 Agustus, Anda mendapatkan diskon tambahan 5%" << endl;
+       }
+```
+
+Kemudian, setelah menghitung diskon sesuai pilihan, kita tambahkan:
+
+```console
+       double diskonTambahan = 0;
+       if (hari == 17 && bulan == 8) {
+           diskonTambahan = totalHarga * 0.05;
+       }
+
+       jumlahDiskon = diskon1 + diskonTambahan; // diskon1 adalah diskon dari pilihan (otomatis/manual)
+
+       // Validasi agar total diskon tidak melebihi totalHarga
+       if (jumlahDiskon > totalHarga) {
+           jumlahDiskon = totalHarga;
+       }
+
+       hargaSetelahDiskon = totalHarga - jumlahDiskon;
+```
+
+Dan di tampilan akhir, kita tampilkan dua diskon jika ada.
+
+Tapi, bagaimana dengan pilihan diskon?
+Pilihan diskon tetap ada (otomatis/manual) dan di 17 Agustus ada tambahan 5%.
+
+Jadi, kita tidak mengubah pilihan, hanya menambahkan diskon di akhir.
+
+Ini sesuai permintaan: "tambahkan diskon kalau tanggal 17 Agustus".
+
+Jadi, perubahan:
+
+       - Sebelum pilihan diskon, tampilkan informasi jika hari ini 17 Agustus (diskon tambahan 5%).
+       - Setelah menghitung diskon sesuai pilihan, tambahkan diskon 5% (jika 17 Agustus).
+       - Tampilkan rincian diskon: diskon pilihan dan diskon tambahan (jika ada).
+
+Namun, permintaan juga: "berikan dulu list tanggal untuk mendapatkan diskon otomatis"
+
+Artinya, kita harus tampilkan daftar tanggal yang dapat diskon otomatis (dalam hal ini 17 Agustus) sebelum pilihan diskon.
+
+Jadi, kita tampilkan:
+
+```console
+       cout << "\nDaftar tanggal diskon otomatis:" << endl;
+       cout << "17 Agustus" << endl;
+```
+
+Tapi, ini hanya satu tanggal. Untuk fleksibilitas, kita bisa buat vector, tapi untuk sederhana, kita tampilkan hardcode.
+
+Jadi, langkah:
+
+```console
+       1. Setelah menampilkan total pembelian, sebelum pilihan diskon:
+           cout << "\nDaftar tanggal diskon otomatis:" << endl;
+           cout << "- 17 Agustus" << endl;
+
+       2. Jika hari ini 17 Agustus, tampilkan tambahan informasi.
+```
+
+Tapi, daftar tanggal diskon otomatis ini tetap ditampilkan meskipun bukan 17 Agustus?
+Ya, sebagai informasi.
+
+Jadi, kita tampilkan selalu.
+
+Tapi, diskon otomatis di sini bukan berarti diskon yang diberikan otomatis tanpa pilihan,
+melainkan diskon tambahan yang otomatis diberikan di tanggal tersebut.
+
+Jadi, kita tampilkan:
+
+```console
+       cout << "\nDaftar tanggal diskon otomatis (tambahan):" << endl;
+       cout << "17 Agustus" << endl;
+```
+
+Lalu, jika hari ini 17 Agustus, kita beri tahu bahwa diskon tambahan akan diberikan.
+
+Implementasi:
+
+````console
+       // Setelah total pembelian
+       cout << "\n======================================" << endl;
+       cout << "      INFORMASI DISKON OTOMATIS       " << endl;
+       cout << "======================================" << endl;
+       cout << "Daftar tanggal diskon otomatis (tambahan):" << endl;
+       cout << "- 17 Agustus" << endl;
+
+       // Cek tanggal
+       int hari = 17, bulan = 8; // hardcode untuk testing
+       bool isTanggalDiskon = (hari == 17 && bulan == 8);
+
+       if (isTanggalDiskon) {
+           cout << "\nHari ini 17 Agustus! Anda akan mendapatkan diskon tambahan 5%" << endl;
+       }
+
+       cout << "======================================" << endl;
+
+       // Lanjut ke pilihan diskon
+```
+
+Kemudian, setelah menghitung diskon1 (dari pilihan), kita hitung diskon tambahan jika isTanggalDiskon.
+
+Di tampilan akhir, kita tampilkan:
+
+```console
+       cout << left << setw(25) << "Total Pembelian"
+            << right << setw(15) << fixed << setprecision(2) << totalHarga << endl;
+       cout << left << setw(25) << "Diskon " << (pilihanDiskon==1?"Otomatis":"Manual")
+            << right << setw(15) << diskon1 << endl;
+       if (isTanggalDiskon) {
+           cout << left << setw(25) << "Diskon Tambahan (17 Agustus)"
+                << right << setw(15) << diskonTambahan << endl;
+       }
+       cout << "--------------------------------------" << endl;
+       cout << left << setw(25) << "Total Diskon"
+            << right << setw(15) << jumlahDiskon << endl;
+       cout << left << setw(25) << "TOTAL YANG HARUS DIBAYAR"
+            << right << setw(15) << hargaSetelahDiskon << endl;
+````
+
+Tapi, perhatikan: diskon1 adalah diskon yang dihitung dari pilihan (otomatis/manual),
+dan diskonTambahan adalah 5% dari totalHarga.
+
+Jadi, total diskon = diskon1 + diskonTambahan.
+
+Namun, jika diskon1 sudah 100%, maka diskonTambahan tidak akan diberikan?
+Tidak, kita berikan, tapi kita batasi total diskon tidak melebihi totalHarga.
+
+```console
+   Validasi:
+
+       if (jumlahDiskon > totalHarga) {
+           jumlahDiskon = totalHarga;
+           hargaSetelahDiskon = 0;
+       }
+```
+
+Tapi, di tampilan, kita tetap tampilkan diskonTambahan meskipun total diskon dibatasi.
+
+Alternatif: kita hitung diskonTambahan setelah diskon1, tapi dari sisa?
+Tapi permintaan: diskon 5% dari total awal.
+
+Jadi, kita hitung diskonTambahan = 0.05 \* totalHarga, lalu tambahkan ke diskon1.
+
+Dan batasi total diskon tidak melebihi totalHarga.
+
+Sekarang, kita ubah program.
+
+Catatan: Untuk testing, kita hardcode tanggal 17 Agustus.
+Jika ingin menggunakan tanggal sistem, bisa menggunakan <ctime> dan struct tm.
+
+Tapi, untuk kesederhanaan, kita hardcode.
+
+Mari kita implementasikan.
 
 </details>
 

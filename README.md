@@ -24,9 +24,10 @@
 <a id="readme-top"></a>
 
 <!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
+
+### DAFTAR ISI
+
+  <ul>
     <li><a href="#aplikasi-diskon-awal">APLIKASI DISKON AWAL</a></li>
     <li><a href="#tambahkan-nama-barang-dan-harga">TAMBAHKAN NAMA BARANG DAN HARGA</a></li>
     <li><a href="#tambahkan-pilihan-diskon">PILIHAN DISKON</a></li>
@@ -34,8 +35,7 @@
     <li><a href="#ubah-barang-dan-harga">UBAH BARANG DAN HARGA</a></li>
     <li><a href="#batalkan-proses-transaksi">BATALKAN PROSES TRANSAKSI</a></li>
     <li><a href="#simpan-hasil-transaksi">SIMPAN HASIL TRANSAKSI</a></li>
-  </ol>
-</details>
+  </ul>
 
 ---
 

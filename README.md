@@ -47,6 +47,9 @@ Mari kita tulis kode tersebut.
 
 ---
 
+<details type="reasoning" done="true">
+<summary>Hasil Implementasinya </summary>
+
 Berikut adalah program C++ sederhana untuk menghitung diskon berdasarkan harga asli dan persentase diskon yang dimasukkan pengguna:
 
 ```cpp
@@ -149,7 +152,7 @@ Harga Akhir      : Rp 212500.00
 3. **Error Handling**:
    - Program keluar dengan kode error jika input tidak valid
 
----
+</details>
 
 ## MENAMBAHKAN UNTUK MEMASUKKAN NAMA BARANG DAN HARGA
 
@@ -198,6 +201,9 @@ Mari kita buat programnya.
 </details>
 
 ---
+
+<details type="reasoning" done="true">
+<summary>Hasil Implementasinya </summary>
 
 Berikut adalah program C++ yang telah diperbarui dengan fitur input barang-barang yang dibeli beserta harganya, kemudian menampilkan total pembayaran sebelum diskon, dilanjutkan dengan perhitungan diskon seperti program sebelumnya:
 
@@ -411,6 +417,8 @@ TOTAL YANG HARUS DIBAYAR          24300.00
 
 Program ini menggabungkan fitur input barang dengan perhitungan diskon dalam satu alur yang intuitif, cocok untuk aplikasi kasir sederhana dengan sistem diskon.
 
+</details>
+
 ### TAMBAHKAN PILIHAN DISKON
 
 tambahkan pilihan otomatis di beri diskon dengan kriteria
@@ -420,7 +428,7 @@ tambahkan pilihan otomatis di beri diskon dengan kriteria
 - 1.000.000 diskon 3 %
   atau input manual diskon
 
-<details type="reasoning" done="true" duration="6">
+<details type="reasoning" done="true">
 <summary>Berpikir logika dulu sebenera :</summary>
 Kita akan menambahkan fitur pilihan diskon otomatis berdasarkan total pembelian atau input manual.
 
@@ -455,6 +463,9 @@ Kita akan memodifikasi bagian setelah menampilkan total pembelian.
 Berikut adalah kode yang telah dimodifikasi:
 
 </details>
+
+<details type="reasoning" done="true">
+<summary>Hasil Implementasinya </summary>
 
 Berikut adalah program C++ yang telah diperbarui dengan fitur pilihan diskon otomatis berdasarkan total pembelian atau input manual diskon:
 
@@ -744,7 +755,7 @@ TOTAL YANG HARUS DIBAYAR         990000.00
 
 Program ini memberikan fleksibilitas kepada pengguna untuk memilih sistem diskon yang diinginkan, baik otomatis berdasarkan total pembelian maupun manual sesuai kebutuhan.
 
----
+## </details>
 
 ### TAMBAHKAN JIKA TANGGAL TERTENDU ADA DISKON
 
@@ -1167,6 +1178,9 @@ Mari kita implementasikan.
 
 </details>
 
+<details type="reasoning" done="true">
+<summary>Hasil Implementasinya </summary>
+
 Berikut adalah program C++ yang telah diperbarui dengan fitur diskon otomatis berdasarkan tanggal 17 Agustus dan sistem diskon ganda:
 
 ```cpp
@@ -1530,4 +1544,5 @@ TOTAL YANG HARUS DIBAYAR      5400000.00
    - Menampilkan semua komponen diskon secara terpisah
    - Format mata uang yang jelas
 
+</details>
 Program ini memberikan fleksibilitas pilihan diskon dengan tambahan diskon spesial di tanggal tertentu (17 Agustus), sehingga pelanggan bisa mendapatkan keuntungan lebih di hari spesial tersebut.

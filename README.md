@@ -756,22 +756,25 @@ berikan dulu list tanggal untuk mendapatkan diskon otomatis
 <summary>Berfikir logika sedikit dulu :</summary>
 Kita akan menambahkan fitur diskon otomatis berdasarkan tanggal tertentu (misalnya 17 Agustus). 
 Langkah-langkah:
+
 1. Tambahkan pilihan diskon otomatis berdasarkan tanggal (misalnya 17 Agustus) dengan diskon 5%.
 2. Sebelum pilihan diskon, tampilkan dulu daftar tanggal yang mendapatkan diskon otomatis (dalam hal ini hanya 17 Agustus).
 3. Jika hari ini adalah tanggal 17 Agustus, maka tambahkan opsi diskon otomatis 5% (atau bisa juga langsung diterapkan?).
 4. Namun, dalam permintaan, kita diminta untuk menambahkan diskon 5% jika tanggal 17 Agustus, jadi kita bisa:
+
    - Menambahkan opsi ketiga: "3. Diskon Spesial 17 Agustus (5%)"
-   - Atau, jika tanggal 17 Agustus, maka otomatis diskon 5% ditambahkan ke diskon yang ada? 
-   Tapi dari permintaan: "tambahkan jika tanggal hari ini tanggal 17 Agustus, maka di beri diskon 5 %", 
-   dan "jadi pilihan diskon tadi tambah diskon kalau tanggal 17 Agustus".
+   - Atau, jika tanggal 17 Agustus, maka otomatis diskon 5% ditambahkan ke diskon yang ada?
+
+Tapi dari permintaan: "tambahkan jika tanggal hari ini tanggal 17 Agustus, maka di beri diskon 5 %", dan "jadi pilihan diskon tadi tambah diskon kalau tanggal 17 Agustus".
 
 Saya interpretasikan:
 
-- Jika tanggal 17 Agustus, maka ada opsi diskon tambahan yaitu 5% (diskon spesial).
-- Jadi pilihan diskon menjadi:
-  1.  Otomatis (berdasarkan total pembelian)
-  2.  Manual (input persentase)
-  3.  Diskon Spesial 17 Agustus (5%) [hanya muncul jika tanggal 17 Agustus]
+1. Jika tanggal 17 Agustus, maka ada opsi diskon tambahan yaitu 5% (diskon spesial).
+2. Jadi pilihan diskon menjadi:
+
+- Otomatis (berdasarkan total pembelian)
+- Manual (input persentase)
+- Diskon Spesial 17 Agustus (5%) [hanya muncul jika tanggal 17 Agustus]
 
 Namun, bagaimana jika kita ingin menggabungkan? Misalnya diskon otomatis (berdasarkan total) dan diskon 17 Agustus?
 Permintaan tidak spesifik. Saya asumsikan bahwa diskon 17 Agustus adalah opsi terpisah.
@@ -802,11 +805,13 @@ Atau diskon 17 Agustus berlaku sebagai diskon tunggal?
 
 Karena permintaan tidak jelas, saya akan buat dua skenario:
 
+```console
 Skenario 1 :
 (sesuai permintaan awal): - Menambah opsi diskon baru: "Diskon Spesial 17 Agustus (5%)" yang hanya muncul jika tanggal 17 Agustus.
 
 Skenario 2 :
 (alternatif): - Jika tanggal 17 Agustus, maka diskon otomatis (berdasarkan total) akan ditambah 5% (jadi diskon total = diskon otomatis + 5%).
+```
 
 Namun, dari kalimat: "tambahkan jika tanggal hari ini tanggal 17 Agustus, maka di beri diskon 5 %",
 dan "jadi pilihan diskon tadi tambah diskon kalau tanggal 17 Agustus", saya pilih Skenario 1: opsi terpisah.
@@ -1083,7 +1088,7 @@ Lalu, jika hari ini 17 Agustus, kita beri tahu bahwa diskon tambahan akan diberi
 
 Implementasi:
 
-````console
+```console
        // Setelah total pembelian
        cout << "\n======================================" << endl;
        cout << "      INFORMASI DISKON OTOMATIS       " << endl;
@@ -1102,6 +1107,7 @@ Implementasi:
        cout << "======================================" << endl;
 
        // Lanjut ke pilihan diskon
+
 ```
 
 Kemudian, setelah menghitung diskon1 (dari pilihan), kita hitung diskon tambahan jika isTanggalDiskon.
@@ -1122,7 +1128,7 @@ Di tampilan akhir, kita tampilkan:
             << right << setw(15) << jumlahDiskon << endl;
        cout << left << setw(25) << "TOTAL YANG HARUS DIBAYAR"
             << right << setw(15) << hargaSetelahDiskon << endl;
-````
+```
 
 Tapi, perhatikan: diskon1 adalah diskon yang dihitung dari pilihan (otomatis/manual),
 dan diskonTambahan adalah 5% dari totalHarga.

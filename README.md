@@ -3085,3 +3085,5 @@ Terima kasih atas pembelian Anda!
 Program ini sekarang memiliki fitur lengkap untuk manajemen transaksi, mulai dari input barang, perubahan data, perhitungan diskon, konfirmasi transaksi, hingga penyimpanan data transaksi untuk keperluan rekam jejak.
 
 </details>
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>

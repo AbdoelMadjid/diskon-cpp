@@ -21,10 +21,11 @@
 
 </div>
 
-## APLIKASI DISKON AWAL
+### APLIKASI DISKON AWAL
 
 <details type="reasoning" done="true" duration="3">
 <summary>Mari kita mulai :</summary>
+
 Kita akan membuat program C++ sederhana untuk menghitung diskon.  
 Program ini akan meminta input dari pengguna berupa harga asli dan persentase diskon.  
 Kemudian, program akan menghitung harga setelah diskon dan menampilkannya.
@@ -44,8 +45,6 @@ Tapi untuk kesederhanaan, kita asumsikan input yang valid.
 Mari kita tulis kode tersebut.
 
 </details>
-
----
 
 <details type="reasoning" done="true">
 <summary>Hasil Implementasinya </summary>
@@ -154,10 +153,11 @@ Harga Akhir      : Rp 212500.00
 
 </details>
 
-## MENAMBAHKAN UNTUK MEMASUKKAN NAMA BARANG DAN HARGA
+### MENAMBAHKAN UNTUK MEMASUKKAN NAMA BARANG DAN HARGA
 
 <details type="reasoning" done="true" duration="7">
 <summary>Gimana ya buatnya :</summary>
+
 Kita akan memodifikasi program sebelumnya dengan menambahkan fitur:
 
 1. Memasukkan beberapa barang (nama barang dan harga per barang)
@@ -199,8 +199,6 @@ Kita juga akan menambahkan validasi untuk harga barang (harus positif).
 Mari kita buat programnya.
 
 </details>
-
----
 
 <details type="reasoning" done="true">
 <summary>Hasil Implementasinya </summary>
@@ -430,6 +428,7 @@ tambahkan pilihan otomatis di beri diskon dengan kriteria
 
 <details type="reasoning" done="true">
 <summary>Berpikir logika dulu sebenera :</summary>
+
 Kita akan menambahkan fitur pilihan diskon otomatis berdasarkan total pembelian atau input manual.
 
 ### Langkah-langkah:
@@ -765,7 +764,8 @@ berikan dulu list tanggal untuk mendapatkan diskon otomatis
 
 <details type="reasoning" done="true" duration="166">
 <summary>Berfikir logika sedikit dulu :</summary>
-Kita akan menambahkan fitur diskon otomatis berdasarkan tanggal tertentu (misalnya 17 Agustus). 
+
+Kita akan menambahkan fitur diskon otomatis berdasarkan tanggal tertentu (misalnya 17 Agustus).
 Langkah-langkah:
 
 1. Tambahkan pilihan diskon otomatis berdasarkan tanggal (misalnya 17 Agustus) dengan diskon 5%.
@@ -829,7 +829,12 @@ dan "jadi pilihan diskon tadi tambah diskon kalau tanggal 17 Agustus", saya pili
 
 Tapi, untuk lebih fleksibel, mungkin kita bisa buat:
 
-Opsi diskon: 1. Diskon Otomatis (berdasarkan total pembelian) 2. Diskon Manual 3. Diskon Spesial 17 Agustus (5%) [hanya muncul jika tanggal 17 Agustus]
+Opsi diskon:
+
+```console
+1. Diskon Otomatis (berdasarkan total pembelian)
+2. Diskon Manual 3. Diskon Spesial 17 Agustus (5%) [hanya muncul jika tanggal 17 Agustus]
+```
 
 Dan jika user memilih opsi 1, maka diskon otomatis berdasarkan total, tanpa tambahan 5% (kecuali jika kita ingin menggabungkan, tapi tidak).
 
@@ -838,7 +843,10 @@ Itu berarti diskon total = diskon otomatis + 5%.
 
 Tapi permintaan: "tambahkan diskon kalau tanggal 17 Agustus", artinya menambah diskon, bukan mengganti.
 
-Jadi, saya akan buat: - Jika tanggal 17 Agustus, maka diskon yang diberikan adalah diskon otomatis (berdasarkan total) DITAMBAH 5%? - Atau diskon 5% sebagai diskon tambahan setelah diskon otomatis?
+Jadi, saya akan buat:
+
+- Jika tanggal 17 Agustus, maka diskon yang diberikan adalah diskon otomatis (berdasarkan total) DITAMBAH 5%?
+- Atau diskon 5% sebagai diskon tambahan setelah diskon otomatis?
 
 Ini perlu klarifikasi. Tapi karena tidak ada, saya akan buat sesuai permintaan:
 "tambahkan jika tanggal hari ini tanggal 17 Agustus, maka di beri diskon 5 %"
@@ -847,8 +855,10 @@ Artinya, di tanggal 17 Agustus, customer mendapat diskon 5% (selain diskon yang 
 
 Namun, dalam program sebelumnya, diskon hanya satu (baik otomatis atau manual).
 
-Saya putuskan: - Jika tanggal 17 Agustus, maka kita akan menambahkan opsi diskon ketiga: "3. Diskon Spesial 17 Agustus (5%)"
-yang memberikan diskon 5% (menggantikan diskon otomatis/manual).
+Saya putuskan:
+
+- Jika tanggal 17 Agustus, maka kita akan menambahkan opsi diskon ketiga: "3. Diskon Spesial 17 Agustus (5%)"
+  yang memberikan diskon 5% (menggantikan diskon otomatis/manual).
 
 Tapi, bagaimana jika kita ingin diskon otomatis dan diskon 17 Agustus berlaku bersamaan?
 Itu berarti diskon total = diskon otomatis + 5%.
@@ -1545,4 +1555,5 @@ TOTAL YANG HARUS DIBAYAR      5400000.00
    - Format mata uang yang jelas
 
 </details>
+
 Program ini memberikan fleksibilitas pilihan diskon dengan tambahan diskon spesial di tanggal tertentu (17 Agustus), sehingga pelanggan bisa mendapatkan keuntungan lebih di hari spesial tersebut.

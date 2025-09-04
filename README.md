@@ -22,12 +22,9 @@
 </div>
 
 <div align="center">
-### APLIKASI DISKON DENGAN C++
-
-## Pembelajaran Logika dalam Pemograman
-
-## By. **Abdul Madjid, S.Pd., M.Pd.**
-
+**APLIKASI DISKON DENGAN C++**<br>
+Pembelajaran Logika dalam Pemograman<br>
+By. **Abdul Madjid, S.Pd., M.Pd.**
 </div>
 
 <a id="readme-top"></a>

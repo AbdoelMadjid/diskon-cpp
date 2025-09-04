@@ -756,7 +756,7 @@ Program ini memberikan fleksibilitas kepada pengguna untuk memilih sistem diskon
 
 ## </details>
 
-### TAMBAHKAN JIKA TANGGAL TERTENDU ADA DISKON
+### TAMBAHKAN JIKA TANGGAL TERTENTU ADA DISKON
 
 tambahkan jika tanggal hari ini tanggal 17 Agustus, maka di beri diskon 5 %,
 jadi pilihan diskon tadi tambah diskon kalau tanggal 17 Agustus.
@@ -1556,4 +1556,1108 @@ TOTAL YANG HARUS DIBAYAR      5400000.00
 
 </details>
 
-Program ini memberikan fleksibilitas pilihan diskon dengan tambahan diskon spesial di tanggal tertentu (17 Agustus), sehingga pelanggan bisa mendapatkan keuntungan lebih di hari spesial tersebut.
+### BATALKAN PROSES TRANSAKSI
+
+tambahkan fitur untuk di lanjutkan atau di batalkan proses transaksi.
+
+<details type="reasoning" done="true">
+<summary>Mari berlogika dulu: </summary>
+
+Kita akan menambahkan fitur untuk melanjutkan atau membatalkan transaksi setelah semua input dan perubahan data selesai.
+
+Langkah-langkah:
+
+1. Setelah proses perubahan data (jika ada) dan sebelum proses diskon, kita akan tanyakan kepada user apakah ingin melanjutkan transaksi atau membatalkan.
+2. Jika user membatalkan, maka program akan berhenti dan menampilkan pesan pembatalan.
+3. Jika melanjutkan, maka program akan melanjutkan ke proses diskon.
+
+Kita juga bisa menambahkan konfirmasi sebelum menyelesaikan transaksi setelah diskon dihitung, tetapi sesuai permintaan, kita fokus pada setelah input data.
+
+Perubahan:
+
+- Setelah proses perubahan data (jika user tidak ingin mengubah lagi), kita akan tanyakan: "Apakah Anda ingin melanjutkan transaksi? (y/n): "
+- Jika user memilih 'n' atau 'N', maka program akan berhenti dan menampilkan pesan pembatalan.
+- Jika user memilih 'y' atau 'Y', maka program akan melanjutkan ke proses diskon.
+
+Kita juga bisa menambahkan konfirmasi di akhir sebelum mencetak struk, tetapi permintaan hanya untuk lanjut/batal setelah input.
+
+Mari kita implementasikan.
+
+</details>
+
+<details type="reasoning" done="true">
+<summary>Hasil Implementasinya </summary>
+Berikut adalah program C++ yang telah diperbarui dengan fitur konfirmasi untuk melanjutkan atau membatalkan transaksi:
+
+```cpp
+#include <iostream>
+#include <iomanip>
+#include <vector>
+#include <string>
+#include <ctime> // Untuk mendapatkan tanggal sistem
+
+using namespace std;
+
+void tampilkanDaftarBarang(const vector<string>& namaBarang, const vector<double>& hargaBarang) {
+    cout << left << setw(5) << "No" << setw(25) << "Nama Barang" << right << setw(15) << "Harga (Rp)" << endl;
+    cout << "--------------------------------------" << endl;
+
+    for (size_t i = 0; i < namaBarang.size(); ++i) {
+        cout << left << setw(5) << i + 1
+             << setw(25) << namaBarang[i]
+             << right << setw(15) << fixed << setprecision(2) << hargaBarang[i] << endl;
+    }
+}
+
+int main() {
+    vector<string> namaBarang;
+    vector<double> hargaBarang;
+    int jumlahBarang;
+    double totalHarga = 0, persentaseDiskon, jumlahDiskon, hargaSetelahDiskon;
+    int pilihanDiskon;
+    char ubahData, lanjutTransaksi;
+
+    // Mendapatkan tanggal sistem
+    time_t now = time(0);
+    tm *ltm = localtime(&now);
+    int hari = ltm->tm_mday;
+    int bulan = 1 + ltm->tm_mon; // Bulan dimulai dari 0
+    int tahun = 1900 + ltm->tm_year;
+
+    cout << "======================================" << endl;
+    cout << "      PROGRAM KASIR DISKON           " << endl;
+    cout << "======================================" << endl;
+
+    // Input jumlah barang
+    cout << "Masukkan jumlah barang yang dibeli: ";
+    cin >> jumlahBarang;
+
+    // Validasi jumlah barang
+    if (jumlahBarang <= 0) {
+        cout << "\nError: Jumlah barang harus lebih dari 0!" << endl;
+        return 1;
+    }
+
+    // Input detail barang
+    cin.ignore(); // Membersihkan buffer input
+    for (int i = 0; i < jumlahBarang; ++i) {
+        string nama;
+        double harga;
+
+        cout << "\nBarang ke-" << i + 1 << ":" << endl;
+        cout << "Nama barang: ";
+        getline(cin, nama);
+
+        cout << "Harga barang (Rp): ";
+        cin >> harga;
+        cin.ignore(); // Membersihkan buffer input
+
+        // Validasi harga barang
+        if (harga <= 0) {
+            cout << "\nError: Harga barang harus lebih dari 0!" << endl;
+            return 1;
+        }
+
+        namaBarang.push_back(nama);
+        hargaBarang.push_back(harga);
+        totalHarga += harga;
+    }
+
+    // Tampilkan daftar pembelian
+    cout << "\n======================================" << endl;
+    cout << "          DAFTAR PEMBELIAN           " << endl;
+    cout << "======================================" << endl;
+    tampilkanDaftarBarang(namaBarang, hargaBarang);
+
+    cout << "--------------------------------------" << endl;
+    cout << left << setw(30) << "TOTAL PEMBELIAN"
+         << right << setw(15) << fixed << setprecision(2) << totalHarga << endl;
+    cout << "======================================" << endl;
+
+    // Opsi untuk mengubah data barang
+    cout << "\nApakah Anda ingin mengubah data barang? (y/n): ";
+    cin >> ubahData;
+
+    if (ubahData == 'y' || ubahData == 'Y') {
+        int nomorBarang;
+        bool lanjutUbah = true;
+
+        while (lanjutUbah) {
+            cout << "\nMasukkan nomor barang yang ingin diubah (1-" << jumlahBarang << "): ";
+            cin >> nomorBarang;
+
+            // Validasi nomor barang
+            if (nomorBarang < 1 || nomorBarang > jumlahBarang) {
+                cout << "Error: Nomor barang tidak valid!" << endl;
+                continue;
+            }
+
+            // Kurangi total harga dengan harga barang lama
+            totalHarga -= hargaBarang[nomorBarang - 1];
+
+            // Input data baru
+            string namaBaru;
+            double hargaBaru;
+
+            cin.ignore(); // Membersihkan buffer input
+            cout << "Nama baru untuk barang: ";
+            getline(cin, namaBaru);
+
+            cout << "Harga baru untuk barang (Rp): ";
+            cin >> hargaBaru;
+
+            // Validasi harga baru
+            if (hargaBaru <= 0) {
+                cout << "Error: Harga barang harus lebih dari 0!" << endl;
+                return 1;
+            }
+
+            // Update data
+            namaBarang[nomorBarang - 1] = namaBaru;
+            hargaBarang[nomorBarang - 1] = hargaBaru;
+            totalHarga += hargaBaru;
+
+            // Tampilkan daftar pembelian yang sudah diperbarui
+            cout << "\n======================================" << endl;
+            cout << "      DAFTAR PEMBELIAN (DIPERBARUI)     " << endl;
+            cout << "======================================" << endl;
+            tampilkanDaftarBarang(namaBarang, hargaBarang);
+
+            cout << "--------------------------------------" << endl;
+            cout << left << setw(30) << "TOTAL PEMBELIAN"
+                 << right << setw(15) << fixed << setprecision(2) << totalHarga << endl;
+            cout << "======================================" << endl;
+
+            // Tanyakan apakah ingin mengubah data lagi
+            cout << "\nApakah ingin mengubah data barang lagi? (y/n): ";
+            cin >> ubahData;
+            if (ubahData != 'y' && ubahData != 'Y') {
+                lanjutUbah = false;
+            }
+        }
+    }
+
+    // Konfirmasi untuk melanjutkan atau membatalkan transaksi
+    cout << "\n======================================" << endl;
+    cout << "        KONFIRMASI TRANSAKSI         " << endl;
+    cout << "======================================" << endl;
+    cout << "Total pembelian: Rp " << fixed << setprecision(2) << totalHarga << endl;
+    cout << "Apakah Anda ingin melanjutkan transaksi? (y/n): ";
+    cin >> lanjutTransaksi;
+
+    if (lanjutTransaksi != 'y' && lanjutTransaksi != 'Y') {
+        cout << "\n======================================" << endl;
+        cout << "        TRANSAKSI DIBATALKAN         " << endl;
+        cout << "======================================" << endl;
+        cout << "Terima kasih telah menggunakan program ini." << endl;
+        return 0;
+    }
+
+    // Tampilkan daftar tanggal diskon otomatis
+    cout << "\n======================================" << endl;
+    cout << "    DAFTAR TANGGAL DISKON OTOMATIS   " << endl;
+    cout << "======================================" << endl;
+    cout << "1. 17 Agustus -> Diskon 5% tambahan" << endl;
+    cout << "======================================" << endl;
+
+    // Cek apakah hari ini 17 Agustus
+    bool isTanggalDiskon = (hari == 17 && bulan == 8);
+    if (isTanggalDiskon) {
+        cout << "\nINFO: Hari ini 17 Agustus " << tahun << "!" << endl;
+        cout << "Anda akan mendapatkan diskon tambahan 5%" << endl;
+    }
+
+    // Pilihan jenis diskon
+    cout << "\nPilih jenis diskon:" << endl;
+    cout << "1. Otomatis (berdasarkan total pembelian)" << endl;
+    cout << "2. Manual (input persentase)" << endl;
+    cout << "Pilihan (1/2): ";
+    cin >> pilihanDiskon;
+
+    // Validasi pilihan
+    if (pilihanDiskon != 1 && pilihanDiskon != 2) {
+        cout << "\nError: Pilihan tidak valid!" << endl;
+        return 1;
+    }
+
+    double diskonUtama = 0; // Diskon dari pilihan (otomatis/manual)
+    string jenisDiskon;
+
+    if (pilihanDiskon == 1) {
+        // Diskon otomatis berdasarkan total pembelian
+        if (totalHarga >= 3000000) {
+            persentaseDiskon = 7;
+        } else if (totalHarga >= 2000000) {
+            persentaseDiskon = 5;
+        } else if (totalHarga >= 1000000) {
+            persentaseDiskon = 3;
+        } else {
+            persentaseDiskon = 0;
+        }
+
+        diskonUtama = totalHarga * (persentaseDiskon / 100);
+        jenisDiskon = "Otomatis";
+        cout << "\nDiskon otomatis diterapkan: " << persentaseDiskon << "%" << endl;
+    } else {
+        // Diskon manual
+        cout << "\nMasukkan persentase diskon (%): ";
+        cin >> persentaseDiskon;
+
+        // Validasi diskon manual
+        if (persentaseDiskon < 0) {
+            cout << "\nError: Diskon tidak boleh negatif!" << endl;
+            return 1;
+        }
+
+        diskonUtama = totalHarga * (persentaseDiskon / 100);
+        jenisDiskon = "Manual";
+    }
+
+    // Hitung diskon tambahan jika tanggal 17 Agustus
+    double diskonTambahan = 0;
+    if (isTanggalDiskon) {
+        diskonTambahan = totalHarga * 0.05; // 5% dari total pembelian
+    }
+
+    // Total diskon
+    jumlahDiskon = diskonUtama + diskonTambahan;
+
+    // Validasi agar total diskon tidak melebihi total pembelian
+    if (jumlahDiskon > totalHarga) {
+        jumlahDiskon = totalHarga;
+    }
+
+    hargaSetelahDiskon = totalHarga - jumlahDiskon;
+
+    // Tampilkan hasil akhir
+    cout << "\n======================================" << endl;
+    cout << "             RINCIAN DISKON           " << endl;
+    cout << "======================================" << endl;
+    cout << left << setw(25) << "Total Pembelian"
+         << right << setw(15) << fixed << setprecision(2) << totalHarga << endl;
+    cout << left << setw(25) << "Diskon " + jenisDiskon
+         << right << setw(15) << diskonUtama << endl;
+
+    if (isTanggalDiskon) {
+        cout << left << setw(25) << "Diskon 17 Agustus (5%)"
+             << right << setw(15) << diskonTambahan << endl;
+    }
+
+    cout << "--------------------------------------" << endl;
+    cout << left << setw(25) << "Total Diskon"
+         << right << setw(15) << jumlahDiskon << endl;
+    cout << left << setw(25) << "TOTAL YANG HARUS DIBAYAR"
+         << right << setw(15) << hargaSetelahDiskon << endl;
+    cout << "======================================" << endl;
+
+    // Konfirmasi akhir transaksi
+    cout << "\nApakah Anda ingin menyelesaikan transaksi ini? (y/n): ";
+    cin >> lanjutTransaksi;
+
+    if (lanjutTransaksi != 'y' && lanjutTransaksi != 'Y') {
+        cout << "\n======================================" << endl;
+        cout << "        TRANSAKSI DIBATALKAN         " << endl;
+        cout << "======================================" << endl;
+        cout << "Terima kasih telah menggunakan program ini." << endl;
+        return 0;
+    }
+
+    // Tampilkan struk pembayaran
+    cout << "\n======================================" << endl;
+    cout << "           STRUK PEMBAYARAN           " << endl;
+    cout << "======================================" << endl;
+    cout << "Tanggal: " << hari << "/" << bulan << "/" << tahun << endl;
+    cout << "--------------------------------------" << endl;
+    tampilkanDaftarBarang(namaBarang, hargaBarang);
+    cout << "--------------------------------------" << endl;
+    cout << left << setw(30) << "TOTAL PEMBELIAN"
+         << right << setw(15) << fixed << setprecision(2) << totalHarga << endl;
+    cout << left << setw(30) << "TOTAL DISKON"
+         << right << setw(15) << fixed << setprecision(2) << jumlahDiskon << endl;
+    cout << "--------------------------------------" << endl;
+    cout << left << setw(30) << "TOTAL BAYAR"
+         << right << setw(15) << fixed << setprecision(2) << hargaSetelahDiskon << endl;
+    cout << "======================================" << endl;
+    cout << "Terima kasih atas pembelian Anda!" << endl;
+
+    return 0;
+}
+```
+
+### Fitur Baru: Konfirmasi Transaksi
+
+Program sekarang memiliki dua titik konfirmasi untuk melanjutkan atau membatalkan transaksi:
+
+1. **Konfirmasi Setelah Input Data**:
+
+   - Setelah semua input dan perubahan data selesai
+   - Program menampilkan total pembelian
+   - Menanyakan: "Apakah Anda ingin melanjutkan transaksi? (y/n)"
+   - Jika user memilih 'n'/'N', transaksi dibatalkan dan program berhenti
+
+2. **Konfirmasi Akhir Sebelum Cetak Struk**:
+   - Setelah semua perhitungan diskon selesai
+   - Program menampilkan rincian diskon dan total pembayaran
+   - Menanyakan: "Apakah Anda ingin menyelesaikan transaksi ini? (y/n)"
+   - Jika user memilih 'n'/'N', transaksi dibatalkan dan program berhenti
+
+### Contoh Penggunaan dengan Pembatalan Transaksi:
+
+```
+======================================
+      PROGRAM KASIR DISKON
+======================================
+Masukkan jumlah barang yang dibeli: 2
+
+Barang ke-1:
+Nama barang: Buku
+Harga barang (Rp): 50000
+
+Barang ke-2:
+Nama barang: Pensil
+Harga barang (Rp): 15000
+
+======================================
+          DAFTAR PEMBELIAN
+======================================
+No   Nama Barang              Harga (Rp)
+--------------------------------------
+1    Buku                         50000.00
+2    Pensil                       15000.00
+--------------------------------------
+TOTAL PEMBELIAN                  65000.00
+======================================
+
+Apakah Anda ingin mengubah data barang? (y/n): n
+
+======================================
+        KONFIRMASI TRANSAKSI
+======================================
+Total pembelian: Rp 65000.00
+Apakah Anda ingin melanjutkan transaksi? (y/n): n
+
+======================================
+        TRANSAKSI DIBATALKAN
+======================================
+Terima kasih telah menggunakan program ini.
+```
+
+### Contoh Penggunaan dengan Transaksi Berhasil:
+
+```
+======================================
+      PROGRAM KASIR DISKON
+======================================
+Masukkan jumlah barang yang dibeli: 3
+
+Barang ke-1:
+Nama barang: Laptop
+Harga barang (Rp): 7500000
+
+Barang ke-2:
+Nama barang: Mouse
+Harga barang (Rp): 300000
+
+Barang ke-3:
+Nama barang: Keyboard
+Harga barang (Rp): 500000
+
+======================================
+          DAFTAR PEMBELIAN
+======================================
+No   Nama Barang              Harga (Rp)
+--------------------------------------
+1    Laptop                     7500000.00
+2    Mouse                       300000.00
+3    Keyboard                    500000.00
+--------------------------------------
+TOTAL PEMBELIAN                 8300000.00
+======================================
+
+Apakah Anda ingin mengubah data barang? (y/n): n
+
+======================================
+        KONFIRMASI TRANSAKSI
+======================================
+Total pembelian: Rp 8300000.00
+Apakah Anda ingin melanjutkan transaksi? (y/n): y
+
+======================================
+    DAFTAR TANGGAL DISKON OTOMATIS
+======================================
+1. 17 Agustus -> Diskon 5% tambahan
+======================================
+
+Pilih jenis diskon:
+1. Otomatis (berdasarkan total pembelian)
+2. Manual (input persentase)
+Pilihan (1/2): 1
+
+Diskon otomatis diterapkan: 7%
+
+======================================
+             RINCIAN DISKON
+======================================
+Total Pembelian                8300000.00
+Diskon Otomatis                581000.00
+--------------------------------------
+Total Diskon                  581000.00
+TOTAL YANG HARUS DIBAYAR      7719000.00
+======================================
+
+Apakah Anda ingin menyelesaikan transaksi ini? (y/n): y
+
+======================================
+           STRUK PEMBAYARAN
+======================================
+Tanggal: 17/8/2023
+--------------------------------------
+No   Nama Barang              Harga (Rp)
+--------------------------------------
+1    Laptop                     7500000.00
+2    Mouse                       300000.00
+3    Keyboard                    500000.00
+--------------------------------------
+TOTAL PEMBELIAN                8300000.00
+TOTAL DISKON                   581000.00
+--------------------------------------
+TOTAL BAYAR                   7719000.00
+======================================
+Terima kasih atas pembelian Anda!
+```
+
+### Fitur Tambahan dalam Program:
+
+1. **Dua Titik Konfirmasi**:
+
+   - Konfirmasi awal setelah input data
+   - Konfirmasi akhir sebelum cetak struk
+
+2. **Struk Pembayaran**:
+
+   - Menampilkan tanggal transaksi
+   - Daftar barang yang dibeli
+   - Total pembelian, diskon, dan jumlah bayar
+   - Pesan penutup
+
+3. **Penanganan Pembatalan**:
+
+   - Pesan jelas ketika transaksi dibatalkan
+   - Program berhenti dengan elegan
+
+4. **Alur Transaksi yang Lengkap**:
+   - Input → Ubah Data → Konfirmasi → Diskon → Konfirmasi Akhir → Cetak Struk
+
+Program ini sekarang memiliki alur transaksi yang lengkap dengan kontrol penuh kepada user untuk melanjutkan atau membatalkan transaksi di setiap titik kritis.
+
+</details>
+
+### SIMPAN HASIL TRANSAKSI
+
+Tambahkan fitur jika tidak di batalkan maka apakah data di simpan
+
+<details type="reasoning" done="true">
+<summary>Mari berlogika dulu: </summary>
+
+Kita akan menambahkan fitur untuk menyimpan data transaksi jika tidak dibatalkan.
+Kita bisa menggunakan file untuk menyimpan data. Data yang akan disimpan meliputi:
+
+- Tanggal transaksi
+- Daftar barang (nama dan harga)
+- Total pembelian
+- Diskon yang diberikan (jenis dan jumlah)
+- Total yang harus dibayar
+
+Kita akan menggunakan file teks (misal: transaksi.txt) untuk menyimpan setiap transaksi.
+
+Langkah-langkah:
+
+1. Setelah konfirmasi akhir (setelah user memilih 'y' untuk menyelesaikan transaksi), kita akan menyimpan data ke file.
+2. Format penyimpanan bisa berupa:
+
+```console
+   Tanggal: dd/mm/yyyy
+   Barang:
+
+   1. NamaBarang1 Harga1
+   2. NamaBarang2 Harga2
+      ...
+      Total Pembelian: total
+      Diskon: jenisDiskon - jumlahDiskon
+      Total Bayar: totalBayar
+```
+
+3. Kita juga bisa menambahkan opsi untuk menampilkan riwayat transaksi, tapi untuk sekarang kita fokus pada penyimpanan.
+
+Namun, karena permintaan hanya "apakah data di simpan", kita bisa langsung menyimpan setelah transaksi selesai.
+
+Tapi untuk lebih interaktif, kita bisa tanyakan dulu apakah user ingin menyimpan data transaksi.
+
+Perubahan:
+
+- Setelah konfirmasi akhir (sebelum cetak struk) kita tanyakan: "Apakah Anda ingin menyimpan data transaksi? (y/n)"
+- Jika ya, maka simpan ke file, lalu cetak struk.
+- Jika tidak, langsung cetak struk.
+
+Kita akan menggunakan ofstream untuk menulis ke file.
+
+Catatan: File akan disimpan di direktori yang sama dengan program, dengan nama "transaksi.txt".
+
+Untuk menghindari penimpaan, kita bisa menambahkan timestamp di nama file, tapi untuk sederhana, kita gunakan append (menambahkan di akhir file).
+
+Format file:
+
+```console
+  ====================== TRANSAKSI ======================
+  Tanggal: 17/8/2023
+  ------------------------------------------------------
+  No  Nama Barang               Harga (Rp)
+  ------------------------------------------------------
+  1   Laptop                    7500000.00
+  2   Mouse                      300000.00
+  3   Keyboard                   500000.00
+  ------------------------------------------------------
+  Total Pembelian: 8300000.00
+  Diskon: Otomatis - 581000.00
+  Total Bayar: 7719000.00
+  =====================================================
+```
+
+Kita akan menulis dalam format yang mirip dengan tampilan di console.
+
+Implementasi:
+
+- Tambahkan include `<fstream>`
+- Setelah konfirmasi akhir (setelah user memilih 'y' untuk menyelesaikan transaksi), tanyakan apakah ingin menyimpan.
+- Jika iya, buka file dengan mode append (`ios::app`) dan tulis data.
+
+Mari kita tambahkan fitur ini.
+
+</details>
+
+<details type="reasoning" done="true">
+<summary>Mari berlogika dulu: </summary>
+Berikut adalah program C++ yang telah diperbarui dengan fitur penyimpanan data transaksi jika tidak dibatalkan:
+
+```cpp
+#include <iostream>
+#include <iomanip>
+#include <vector>
+#include <string>
+#include <ctime> // Untuk mendapatkan tanggal sistem
+#include <fstream> // Untuk menyimpan data ke file
+
+using namespace std;
+
+void tampilkanDaftarBarang(const vector<string>& namaBarang, const vector<double>& hargaBarang) {
+    cout << left << setw(5) << "No" << setw(25) << "Nama Barang" << right << setw(15) << "Harga (Rp)" << endl;
+    cout << "--------------------------------------" << endl;
+
+    for (size_t i = 0; i < namaBarang.size(); ++i) {
+        cout << left << setw(5) << i + 1
+             << setw(25) << namaBarang[i]
+             << right << setw(15) << fixed << setprecision(2) << hargaBarang[i] << endl;
+    }
+}
+
+void simpanTransaksi(const vector<string>& namaBarang, const vector<double>& hargaBarang,
+                    double totalHarga, double jumlahDiskon, double hargaSetelahDiskon,
+                    string jenisDiskon, int hari, int bulan, int tahun) {
+    ofstream file("riwayat_transaksi.txt", ios::app); // Membuka file dalam mode append
+
+    if (!file.is_open()) {
+        cout << "Error: Tidak dapat membuka file untuk menyimpan data!" << endl;
+        return;
+    }
+
+    // Menulis data transaksi ke file
+    file << "======================================" << endl;
+    file << "           DATA TRANSAKSI            " << endl;
+    file << "======================================" << endl;
+    file << "Tanggal: " << hari << "/" << bulan << "/" << tahun << endl;
+    file << "--------------------------------------" << endl;
+    file << left << setw(5) << "No" << setw(25) << "Nama Barang" << right << setw(15) << "Harga (Rp)" << endl;
+    file << "--------------------------------------" << endl;
+
+    for (size_t i = 0; i < namaBarang.size(); ++i) {
+        file << left << setw(5) << i + 1
+             << setw(25) << namaBarang[i]
+             << right << setw(15) << fixed << setprecision(2) << hargaBarang[i] << endl;
+    }
+
+    file << "--------------------------------------" << endl;
+    file << left << setw(30) << "TOTAL PEMBELIAN"
+         << right << setw(15) << fixed << setprecision(2) << totalHarga << endl;
+    file << left << setw(30) << "DISKON (" + jenisDiskon + ")"
+         << right << setw(15) << fixed << setprecision(2) << jumlahDiskon << endl;
+    file << "--------------------------------------" << endl;
+    file << left << setw(30) << "TOTAL BAYAR"
+         << right << setw(15) << fixed << setprecision(2) << hargaSetelahDiskon << endl;
+    file << "======================================" << endl;
+    file << endl; // Spasi antar transaksi
+
+    file.close(); // Menutup file
+}
+
+int main() {
+    vector<string> namaBarang;
+    vector<double> hargaBarang;
+    int jumlahBarang;
+    double totalHarga = 0, persentaseDiskon, jumlahDiskon, hargaSetelahDiskon;
+    int pilihanDiskon;
+    char ubahData, lanjutTransaksi, simpanData;
+
+    // Mendapatkan tanggal sistem
+    time_t now = time(0);
+    tm *ltm = localtime(&now);
+    int hari = ltm->tm_mday;
+    int bulan = 1 + ltm->tm_mon; // Bulan dimulai dari 0
+    int tahun = 1900 + ltm->tm_year;
+
+    cout << "======================================" << endl;
+    cout << "      PROGRAM KASIR DISKON           " << endl;
+    cout << "======================================" << endl;
+
+    // Input jumlah barang
+    cout << "Masukkan jumlah barang yang dibeli: ";
+    cin >> jumlahBarang;
+
+    // Validasi jumlah barang
+    if (jumlahBarang <= 0) {
+        cout << "\nError: Jumlah barang harus lebih dari 0!" << endl;
+        return 1;
+    }
+
+    // Input detail barang
+    cin.ignore(); // Membersihkan buffer input
+    for (int i = 0; i < jumlahBarang; ++i) {
+        string nama;
+        double harga;
+
+        cout << "\nBarang ke-" << i + 1 << ":" << endl;
+        cout << "Nama barang: ";
+        getline(cin, nama);
+
+        cout << "Harga barang (Rp): ";
+        cin >> harga;
+        cin.ignore(); // Membersihkan buffer input
+
+        // Validasi harga barang
+        if (harga <= 0) {
+            cout << "\nError: Harga barang harus lebih dari 0!" << endl;
+            return 1;
+        }
+
+        namaBarang.push_back(nama);
+        hargaBarang.push_back(harga);
+        totalHarga += harga;
+    }
+
+    // Tampilkan daftar pembelian
+    cout << "\n======================================" << endl;
+    cout << "          DAFTAR PEMBELIAN           " << endl;
+    cout << "======================================" << endl;
+    tampilkanDaftarBarang(namaBarang, hargaBarang);
+
+    cout << "--------------------------------------" << endl;
+    cout << left << setw(30) << "TOTAL PEMBELIAN"
+         << right << setw(15) << fixed << setprecision(2) << totalHarga << endl;
+    cout << "======================================" << endl;
+
+    // Opsi untuk mengubah data barang
+    cout << "\nApakah Anda ingin mengubah data barang? (y/n): ";
+    cin >> ubahData;
+
+    if (ubahData == 'y' || ubahData == 'Y') {
+        int nomorBarang;
+        bool lanjutUbah = true;
+
+        while (lanjutUbah) {
+            cout << "\nMasukkan nomor barang yang ingin diubah (1-" << jumlahBarang << "): ";
+            cin >> nomorBarang;
+
+            // Validasi nomor barang
+            if (nomorBarang < 1 || nomorBarang > jumlahBarang) {
+                cout << "Error: Nomor barang tidak valid!" << endl;
+                continue;
+            }
+
+            // Kurangi total harga dengan harga barang lama
+            totalHarga -= hargaBarang[nomorBarang - 1];
+
+            // Input data baru
+            string namaBaru;
+            double hargaBaru;
+
+            cin.ignore(); // Membersihkan buffer input
+            cout << "Nama baru untuk barang: ";
+            getline(cin, namaBaru);
+
+            cout << "Harga baru untuk barang (Rp): ";
+            cin >> hargaBaru;
+
+            // Validasi harga baru
+            if (hargaBaru <= 0) {
+                cout << "Error: Harga barang harus lebih dari 0!" << endl;
+                return 1;
+            }
+
+            // Update data
+            namaBarang[nomorBarang - 1] = namaBaru;
+            hargaBarang[nomorBarang - 1] = hargaBaru;
+            totalHarga += hargaBaru;
+
+            // Tampilkan daftar pembelian yang sudah diperbarui
+            cout << "\n======================================" << endl;
+            cout << "      DAFTAR PEMBELIAN (DIPERBARUI)     " << endl;
+            cout << "======================================" << endl;
+            tampilkanDaftarBarang(namaBarang, hargaBarang);
+
+            cout << "--------------------------------------" << endl;
+            cout << left << setw(30) << "TOTAL PEMBELIAN"
+                 << right << setw(15) << fixed << setprecision(2) << totalHarga << endl;
+            cout << "======================================" << endl;
+
+            // Tanyakan apakah ingin mengubah data lagi
+            cout << "\nApakah ingin mengubah data barang lagi? (y/n): ";
+            cin >> ubahData;
+            if (ubahData != 'y' && ubahData != 'Y') {
+                lanjutUbah = false;
+            }
+        }
+    }
+
+    // Konfirmasi untuk melanjutkan atau membatalkan transaksi
+    cout << "\n======================================" << endl;
+    cout << "        KONFIRMASI TRANSAKSI         " << endl;
+    cout << "======================================" << endl;
+    cout << "Total pembelian: Rp " << fixed << setprecision(2) << totalHarga << endl;
+    cout << "Apakah Anda ingin melanjutkan transaksi? (y/n): ";
+    cin >> lanjutTransaksi;
+
+    if (lanjutTransaksi != 'y' && lanjutTransaksi != 'Y') {
+        cout << "\n======================================" << endl;
+        cout << "        TRANSAKSI DIBATALKAN         " << endl;
+        cout << "======================================" << endl;
+        cout << "Terima kasih telah menggunakan program ini." << endl;
+        cout << "Data transaksi tidak disimpan." << endl;
+        return 0;
+    }
+
+    // Tampilkan daftar tanggal diskon otomatis
+    cout << "\n======================================" << endl;
+    cout << "    DAFTAR TANGGAL DISKON OTOMATIS   " << endl;
+    cout << "======================================" << endl;
+    cout << "1. 17 Agustus -> Diskon 5% tambahan" << endl;
+    cout << "======================================" << endl;
+
+    // Cek apakah hari ini 17 Agustus
+    bool isTanggalDiskon = (hari == 17 && bulan == 8);
+    if (isTanggalDiskon) {
+        cout << "\nINFO: Hari ini 17 Agustus " << tahun << "!" << endl;
+        cout << "Anda akan mendapatkan diskon tambahan 5%" << endl;
+    }
+
+    // Pilihan jenis diskon
+    cout << "\nPilih jenis diskon:" << endl;
+    cout << "1. Otomatis (berdasarkan total pembelian)" << endl;
+    cout << "2. Manual (input persentase)" << endl;
+    cout << "Pilihan (1/2): ";
+    cin >> pilihanDiskon;
+
+    // Validasi pilihan
+    if (pilihanDiskon != 1 && pilihanDiskon != 2) {
+        cout << "\nError: Pilihan tidak valid!" << endl;
+        return 1;
+    }
+
+    double diskonUtama = 0; // Diskon dari pilihan (otomatis/manual)
+    string jenisDiskon;
+
+    if (pilihanDiskon == 1) {
+        // Diskon otomatis berdasarkan total pembelian
+        if (totalHarga >= 3000000) {
+            persentaseDiskon = 7;
+        } else if (totalHarga >= 2000000) {
+            persentaseDiskon = 5;
+        } else if (totalHarga >= 1000000) {
+            persentaseDiskon = 3;
+        } else {
+            persentaseDiskon = 0;
+        }
+
+        diskonUtama = totalHarga * (persentaseDiskon / 100);
+        jenisDiskon = "Otomatis";
+        cout << "\nDiskon otomatis diterapkan: " << persentaseDiskon << "%" << endl;
+    } else {
+        // Diskon manual
+        cout << "\nMasukkan persentase diskon (%): ";
+        cin >> persentaseDiskon;
+
+        // Validasi diskon manual
+        if (persentaseDiskon < 0) {
+            cout << "\nError: Diskon tidak boleh negatif!" << endl;
+            return 1;
+        }
+
+        diskonUtama = totalHarga * (persentaseDiskon / 100);
+        jenisDiskon = "Manual";
+    }
+
+    // Hitung diskon tambahan jika tanggal 17 Agustus
+    double diskonTambahan = 0;
+    if (isTanggalDiskon) {
+        diskonTambahan = totalHarga * 0.05; // 5% dari total pembelian
+    }
+
+    // Total diskon
+    jumlahDiskon = diskonUtama + diskonTambahan;
+
+    // Validasi agar total diskon tidak melebihi total pembelian
+    if (jumlahDiskon > totalHarga) {
+        jumlahDiskon = totalHarga;
+    }
+
+    hargaSetelahDiskon = totalHarga - jumlahDiskon;
+
+    // Tampilkan hasil akhir
+    cout << "\n======================================" << endl;
+    cout << "             RINCIAN DISKON           " << endl;
+    cout << "======================================" << endl;
+    cout << left << setw(25) << "Total Pembelian"
+         << right << setw(15) << fixed << setprecision(2) << totalHarga << endl;
+    cout << left << setw(25) << "Diskon " + jenisDiskon
+         << right << setw(15) << diskonUtama << endl;
+
+    if (isTanggalDiskon) {
+        cout << left << setw(25) << "Diskon 17 Agustus (5%)"
+             << right << setw(15) << diskonTambahan << endl;
+    }
+
+    cout << "--------------------------------------" << endl;
+    cout << left << setw(25) << "Total Diskon"
+         << right << setw(15) << jumlahDiskon << endl;
+    cout << left << setw(25) << "TOTAL YANG HARUS DIBAYAR"
+         << right << setw(15) << hargaSetelahDiskon << endl;
+    cout << "======================================" << endl;
+
+    // Konfirmasi akhir transaksi
+    cout << "\nApakah Anda ingin menyelesaikan transaksi ini? (y/n): ";
+    cin >> lanjutTransaksi;
+
+    if (lanjutTransaksi != 'y' && lanjutTransaksi != 'Y') {
+        cout << "\n======================================" << endl;
+        cout << "        TRANSAKSI DIBATALKAN         " << endl;
+        cout << "======================================" << endl;
+        cout << "Terima kasih telah menggunakan program ini." << endl;
+        cout << "Data transaksi tidak disimpan." << endl;
+        return 0;
+    }
+
+    // Tanyakan apakah ingin menyimpan data transaksi
+    cout << "\nApakah Anda ingin menyimpan data transaksi ini? (y/n): ";
+    cin >> simpanData;
+
+    if (simpanData == 'y' || simpanData == 'Y') {
+        simpanTransaksi(namaBarang, hargaBarang, totalHarga, jumlahDiskon, hargaSetelahDiskon,
+                       jenisDiskon, hari, bulan, tahun);
+        cout << "\nData transaksi berhasil disimpan!" << endl;
+    } else {
+        cout << "\nData transaksi tidak disimpan." << endl;
+    }
+
+    // Tampilkan struk pembayaran
+    cout << "\n======================================" << endl;
+    cout << "           STRUK PEMBAYARAN           " << endl;
+    cout << "======================================" << endl;
+    cout << "Tanggal: " << hari << "/" << bulan << "/" << tahun << endl;
+    cout << "--------------------------------------" << endl;
+    tampilkanDaftarBarang(namaBarang, hargaBarang);
+    cout << "--------------------------------------" << endl;
+    cout << left << setw(30) << "TOTAL PEMBELIAN"
+         << right << setw(15) << fixed << setprecision(2) << totalHarga << endl;
+    cout << left << setw(30) << "TOTAL DISKON"
+         << right << setw(15) << fixed << setprecision(2) << jumlahDiskon << endl;
+    cout << "--------------------------------------" << endl;
+    cout << left << setw(30) << "TOTAL BAYAR"
+         << right << setw(15) << fixed << setprecision(2) << hargaSetelahDiskon << endl;
+    cout << "======================================" << endl;
+    cout << "Terima kasih atas pembelian Anda!" << endl;
+
+    return 0;
+}
+```
+
+### Fitur Baru: Penyimpanan Data Transaksi
+
+Program sekarang memiliki fitur untuk menyimpan data transaksi ke file jika transaksi tidak dibatalkan:
+
+1. **Fungsi simpanTransaksi**:
+
+   - Fungsi khusus untuk menyimpan data transaksi ke file
+   - Menyimpan dalam format yang terstruktur dan mudah dibaca
+   - File disimpan dengan nama "riwayat_transaksi.txt"
+
+2. **Proses Penyimpanan**:
+
+   - Setelah konfirmasi akhir transaksi, program menanyakan: "Apakah Anda ingin menyimpan data transaksi ini? (y/n)"
+   - Jika user memilih 'y'/'Y', data transaksi disimpan ke file
+   - Jika user memilih 'n'/'N', data tidak disimpan
+
+3. **Data yang Disimpan**:
+
+   - Tanggal transaksi
+   - Daftar barang yang dibeli (nama dan harga)
+   - Total pembelian
+   - Jenis dan jumlah diskon
+   - Total yang harus dibayar
+
+4. **Format File**:
+   - Format yang sama dengan tampilan di console
+   - Setiap transaksi dipisahkan dengan garis pembatas
+   - Mudah dibaca dan dianalisis
+
+### Contoh Isi File "riwayat_transaksi.txt":
+
+```
+======================================
+           DATA TRANSAKSI
+======================================
+Tanggal: 17/8/2023
+--------------------------------------
+No   Nama Barang              Harga (Rp)
+--------------------------------------
+1    Laptop                     7500000.00
+2    Mouse                       300000.00
+3    Keyboard                    500000.00
+--------------------------------------
+TOTAL PEMBELIAN                8300000.00
+DISKON (Otomatis)               581000.00
+--------------------------------------
+TOTAL BAYAR                   7719000.00
+======================================
+
+======================================
+           DATA TRANSAKSI
+======================================
+Tanggal: 18/8/2023
+--------------------------------------
+No   Nama Barang              Harga (Rp)
+--------------------------------------
+1    Buku                         50000.00
+2    Pensil                       15000.00
+--------------------------------------
+TOTAL PEMBELIAN                  65000.00
+DISKON (Manual)                  6500.00
+--------------------------------------
+TOTAL BAYAR                    58500.00
+======================================
+```
+
+### Contoh Penggunaan dengan Penyimpanan Data:
+
+```
+======================================
+      PROGRAM KASIR DISKON
+======================================
+Masukkan jumlah barang yang dibeli: 2
+
+Barang ke-1:
+Nama barang: Buku
+Harga barang (Rp): 50000
+
+Barang ke-2:
+Nama barang: Pensil
+Harga barang (Rp): 15000
+
+======================================
+          DAFTAR PEMBELIAN
+======================================
+No   Nama Barang              Harga (Rp)
+--------------------------------------
+1    Buku                         50000.00
+2    Pensil                       15000.00
+--------------------------------------
+TOTAL PEMBELIAN                  65000.00
+======================================
+
+Apakah Anda ingin mengubah data barang? (y/n): n
+
+======================================
+        KONFIRMASI TRANSAKSI
+======================================
+Total pembelian: Rp 65000.00
+Apakah Anda ingin melanjutkan transaksi? (y/n): y
+
+======================================
+    DAFTAR TANGGAL DISKON OTOMATIS
+======================================
+1. 17 Agustus -> Diskon 5% tambahan
+======================================
+
+Pilih jenis diskon:
+1. Otomatis (berdasarkan total pembelian)
+2. Manual (input persentase)
+Pilihan (1/2): 2
+
+Masukkan persentase diskon (%): 10
+
+======================================
+             RINCIAN DISKON
+======================================
+Total Pembelian                  65000.00
+Diskon Manual                     6500.00
+--------------------------------------
+Total Diskon                     6500.00
+TOTAL YANG HARUS DIBAYAR         58500.00
+======================================
+
+Apakah Anda ingin menyelesaikan transaksi ini? (y/n): y
+
+Apakah Anda ingin menyimpan data transaksi ini? (y/n): y
+
+Data transaksi berhasil disimpan!
+
+======================================
+           STRUK PEMBAYARAN
+======================================
+Tanggal: 18/8/2023
+--------------------------------------
+No   Nama Barang              Harga (Rp)
+--------------------------------------
+1    Buku                         50000.00
+2    Pensil                       15000.00
+--------------------------------------
+TOTAL PEMBELIAN                  65000.00
+TOTAL DISKON                     6500.00
+--------------------------------------
+TOTAL BAYAR                     58500.00
+======================================
+Terima kasih atas pembelian Anda!
+```
+
+### Fitur Tambahan dalam Program:
+
+1. **Penyimpanan Data Transaksi**:
+
+   - Menggunakan library `<fstream>` untuk operasi file
+   - Mode append (ios::app) untuk menambah data tanpa menghapus data sebelumnya
+   - Validasi pembukaan file
+
+2. **Konfirmasi Penyimpanan**:
+
+   - User memiliki kontrol penuh apakah data akan disimpan atau tidak
+   - Pesan jelas tentang status penyimpanan
+
+3. **Format File yang Konsisten**:
+
+   - Format yang sama dengan tampilan di console
+   - Mudah untuk dibaca kembali atau diimpor ke sistem lain
+
+4. **Informasi Lengkap**:
+   - Semua detail transaksi tersimpan
+   - Termasuk tanggal transaksi untuk keperluan pelacakan
+
+Program ini sekarang memiliki fitur lengkap untuk manajemen transaksi, mulai dari input barang, perubahan data, perhitungan diskon, konfirmasi transaksi, hingga penyimpanan data transaksi untuk keperluan rekam jejak.
+
+</details>

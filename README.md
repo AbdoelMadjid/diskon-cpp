@@ -21,11 +21,7 @@
 
 </div>
 
-### USER
-
-buatkan program CPP untuk aplikasi diskon
-
-### ASSISTANT
+## APLIKASI DISKON AWAL
 
 <details type="reasoning" done="true" duration="3">
 <summary>Thought for 3 seconds</summary>
@@ -48,6 +44,9 @@ Tapi untuk kesederhanaan, kita asumsikan input yang valid.
 Mari kita tulis kode tersebut.
 
 </details>
+
+---
+
 Berikut adalah program C++ sederhana untuk menghitung diskon berdasarkan harga asli dan persentase diskon yang dimasukkan pengguna:
 
 ```cpp
@@ -157,51 +156,56 @@ Program ini dapat dikembangkan lebih lanjut dengan:
 - Perhitungan untuk multiple item
 - Penyimpanan data transaksi
 
-### USER
+---
 
-tambahkan untuk memasukkan dulu barang-barang yang di beli langsung muncul harganya kemudian di bawahnya jumlah harga yang harus di bayar
-kemudian seperti program sebelumnya
-
-### ASSISTANT
+## MENAMBAHKAN UNTUK MEMASUKKAN NAMA BARANG DAN HARGA
 
 <details type="reasoning" done="true" duration="7">
 <summary>Thought for 7 seconds</summary>
-> Kita akan memodifikasi program sebelumnya dengan menambahkan fitur:
->  1. Memasukkan beberapa barang (nama barang dan harga per barang)
->  2. Menampilkan daftar barang yang dibeli beserta harganya
->  3. Menghitung total harga sebelum diskon
->  4. Kemudian memasukkan persentase diskon
->  5. Menghitung diskon dan total setelah diskon
-> 
->  Langkah-langkah:
->  - Gunakan array atau vector untuk menyimpan nama barang dan harga (karena jumlah barang bisa lebih dari satu)
->  - Kita akan meminta pengguna memasukkan jumlah barang terlebih dahulu, kemudian untuk setiap barang masukkan nama dan harga.
->  - Hitung total harga.
->  - Kemudian tampilkan daftar barang dan harga per barang, lalu total.
->  - Setelah itu, minta persentase diskon.
->  - Hitung diskon dan total akhir.
-> 
->  Kita akan menggunakan vector untuk fleksibilitas.
-> 
->  Struktur:
->  1. Input jumlah barang.
->  2. Loop untuk setiap barang: input nama dan harga.
->  3. Tampilkan tabel daftar barang dan harga, lalu total.
->  4. Input persentase diskon.
->  5. Hitung diskon dan total akhir.
->  6. Tampilkan hasil akhir.
-> 
->  Catatan: Kita akan menggunakan <vector> dan <string> untuk menyimpan data barang.
-> 
->  Perubahan dari program sebelumnya:
->  - Menambahkan input barang-barang.
->  - Menampilkan daftar pembelian.
->  - Baru kemudian menghitung diskon.
-> 
->  Kita juga akan menambahkan validasi untuk harga barang (harus positif).
-> 
->  Mari kita buat programnya.
+Kita akan memodifikasi program sebelumnya dengan menambahkan fitur:
+
+1. Memasukkan beberapa barang (nama barang dan harga per barang)
+2. Menampilkan daftar barang yang dibeli beserta harganya
+3. Menghitung total harga sebelum diskon
+4. Memasukkan persentase diskon
+5. Menghitung diskon dan total setelah diskon
+
+### Langkah-langkah:
+
+- Gunakan array atau vector untuk menyimpan nama barang dan harga (karena jumlah barang bisa lebih dari satu).
+- Minta pengguna memasukkan jumlah barang terlebih dahulu, kemudian untuk setiap barang masukkan nama dan harga.
+- Hitung total harga.
+- Tampilkan daftar barang dan harga per barang, lalu total.
+- Setelah itu, minta persentase diskon.
+- Hitung diskon dan total akhir.
+
+### Struktur Program:
+
+1. Input jumlah barang.
+2. Loop untuk setiap barang: input nama dan harga.
+3. Tampilkan tabel daftar barang dan harga, lalu total.
+4. Input persentase diskon.
+5. Hitung diskon dan total akhir.
+6. Tampilkan hasil akhir.
+
+### Catatan:
+
+- Kita akan menggunakan `<vector>` dan `<string>` untuk menyimpan data barang.
+
+### Perubahan dari Program Sebelumnya:
+
+- Menambahkan input barang-barang.
+- Menampilkan daftar pembelian.
+- Baru kemudian menghitung diskon.
+
+Kita juga akan menambahkan validasi untuk harga barang (harus positif).
+
+Mari kita buat programnya.
+
 </details>
+
+---
+
 Berikut adalah program C++ yang telah diperbarui dengan fitur input barang-barang yang dibeli beserta harganya, kemudian menampilkan total pembayaran sebelum diskon, dilanjutkan dengan perhitungan diskon seperti program sebelumnya:
 
 ```cpp
@@ -414,44 +418,51 @@ TOTAL YANG HARUS DIBAYAR          24300.00
 
 Program ini menggabungkan fitur input barang dengan perhitungan diskon dalam satu alur yang intuitif, cocok untuk aplikasi kasir sederhana dengan sistem diskon.
 
-### USER
+### TAMBAHKAN PILIHAN DISKON
 
 tambahkan pilihan otomatis di beri diskon dengan kriteria
 
-> 3.000.000 diskon 7 %
-> 2.000.000 diskon 5 %
-> 1.000.000 diskon 3 %
-> atau input manual diskon
-
-### ASSISTANT
+- 3.000.000 diskon 7 %
+- 2.000.000 diskon 5 %
+- 1.000.000 diskon 3 %
+  atau input manual diskon
 
 <details type="reasoning" done="true" duration="6">
 <summary>Thought for 6 seconds</summary>
-> Kita akan menambahkan fitur pilihan diskon otomatis berdasarkan total pembelian atau input manual.
->  Langkah-langkah:
->  1. Setelah menghitung total pembelian, tampilkan pilihan kepada user:
->     - Apakah ingin menggunakan diskon otomatis (berdasarkan kriteria) atau input manual?
->  2. Jika memilih otomatis, maka program akan mengecek total pembelian dan menerapkan diskon sesuai kriteria:
->       > 3.000.000 -> 7%
->       > 2.000.000 -> 5%
->       > 1.000.000 -> 3%
->     Jika total pembelian kurang dari 1.000.000, maka diskon 0%.
->  3. Jika memilih manual, maka user memasukkan persentase diskon.
-> 
->  Kita akan modifikasi bagian setelah menampilkan total pembelian.
-> 
->  Perubahan:
->    - Setelah menampilkan total pembelian, kita beri pilihan:
->         cout << "\nPilih jenis diskon:\n";
->         cout << "1. Otomatis (berdasarkan total pembelian)\n";
->         cout << "2. Manual (input persentase)\n";
->         cout << "Pilihan (1/2): ";
->    - Kemudian kita baca pilihan dan lakukan perhitungan diskon sesuai pilihan.
-> 
->  Catatan: Kita tetap memvalidasi input manual agar tidak negatif.
-> 
->  Berikut adalah kode yang telah dimodifikasi:
+Kita akan menambahkan fitur pilihan diskon otomatis berdasarkan total pembelian atau input manual.
+
+### Langkah-langkah:
+
+1. Setelah menghitung total pembelian, tampilkan pilihan kepada user:
+   - Apakah ingin menggunakan diskon otomatis (berdasarkan kriteria) atau input manual?
+2. Jika memilih otomatis, maka program akan mengecek total pembelian dan menerapkan diskon sesuai kriteria:
+   - > 3.000.000 → 7%
+   - > 2.000.000 → 5%
+   - > 1.000.000 → 3%
+   - Jika total pembelian kurang dari 1.000.000, maka diskon 0%.
+3. Jika memilih manual, maka user memasukkan persentase diskon.
+
+Kita akan memodifikasi bagian setelah menampilkan total pembelian.
+
+### Perubahan:
+
+- Setelah menampilkan total pembelian, kita beri pilihan:
+
+```cpp
+  cout << "\nPilih jenis diskon:\n";
+  cout << "1. Otomatis (berdasarkan total pembelian)\n";
+  cout << "2. Manual (input persentase)\n";
+  cout << "Pilihan (1/2): ";
+```
+
+- Kemudian kita baca pilihan dan lakukan perhitungan diskon sesuai pilihan.
+
+**Catatan:** Kita tetap memvalidasi input manual agar tidak negatif.
+
+Berikut adalah kode yang telah dimodifikasi:
+
 </details>
+
 Berikut adalah program C++ yang telah diperbarui dengan fitur pilihan diskon otomatis berdasarkan total pembelian atau input manual diskon:
 
 ```cpp
@@ -740,13 +751,13 @@ TOTAL YANG HARUS DIBAYAR         990000.00
 
 Program ini memberikan fleksibilitas kepada pengguna untuk memilih sistem diskon yang diinginkan, baik otomatis berdasarkan total pembelian maupun manual sesuai kebutuhan.
 
-### USER
+---
+
+### TAMBAHKAN JIKA TANGGAL TERTENDU ADA DISKON
 
 tambahkan jika tanggal hari ini tanggal 17 Agustus, maka di beri diskon 5 %,
 jadi pilihan diskon tadi tambah diskon kalau tanggal 17 Agustus.
 berikan dulu list tanggal untuk mendapatkan diskon otomatis
-
-### ASSISTANT
 
 <details type="reasoning" done="true" duration="166">
 <summary>Thought for 166 seconds</summary>
@@ -1117,7 +1128,9 @@ berikan dulu list tanggal untuk mendapatkan diskon otomatis
 >     Tapi, untuk kesederhanaan, kita hardcode.
 > 
 >     Mari kita implementasikan.
+
 </details>
+
 Berikut adalah program C++ yang telah diperbarui dengan fitur diskon otomatis berdasarkan tanggal 17 Agustus dan sistem diskon ganda:
 
 ```cpp

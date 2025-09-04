@@ -21,6 +21,10 @@
 
 </div>
 
+<H2 align="center">APLIKASI DISKON DENGAN C++</H2>
+<H5 align="center">Pembelajaran Logika dalam Pemograman</H5>
+<H6 align="center">By. **Abdul Madjid, S.Pd., M.Pd.**</H6>
+
 <a id="readme-top"></a>
 
 <!-- TABLE OF CONTENTS -->

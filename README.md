@@ -23,8 +23,8 @@
 
 ### APLIKASI DISKON AWAL
 
-<details type="reasoning" done="true" duration="3">
-<summary>Mari kita mulai :</summary>
+<details type="reasoning" done="true">
+<summary>Penjelasan :</summary>
 
 Kita akan membuat program C++ sederhana untuk menghitung diskon.  
 Program ini akan meminta input dari pengguna berupa harga asli dan persentase diskon.  
@@ -47,7 +47,7 @@ Mari kita tulis kode tersebut.
 </details>
 
 <details type="reasoning" done="true">
-<summary>Hasil Implementasinya </summary>
+<summary>Hasil Program :</summary>
 
 Berikut adalah program C++ sederhana untuk menghitung diskon berdasarkan harga asli dan persentase diskon yang dimasukkan pengguna:
 
@@ -153,10 +153,12 @@ Harga Akhir      : Rp 212500.00
 
 </details>
 
+---
+
 ### MENAMBAHKAN UNTUK MEMASUKKAN NAMA BARANG DAN HARGA
 
-<details type="reasoning" done="true" duration="7">
-<summary>Gimana ya buatnya :</summary>
+<details type="reasoning" done="true">
+<summary>Penjelasan :</summary>
 
 Kita akan memodifikasi program sebelumnya dengan menambahkan fitur:
 
@@ -201,7 +203,7 @@ Mari kita buat programnya.
 </details>
 
 <details type="reasoning" done="true">
-<summary>Hasil Implementasinya </summary>
+<summary>Hasil Program : </summary>
 
 Berikut adalah program C++ yang telah diperbarui dengan fitur input barang-barang yang dibeli beserta harganya, kemudian menampilkan total pembayaran sebelum diskon, dilanjutkan dengan perhitungan diskon seperti program sebelumnya:
 
@@ -417,6 +419,8 @@ Program ini menggabungkan fitur input barang dengan perhitungan diskon dalam sat
 
 </details>
 
+---
+
 ### TAMBAHKAN PILIHAN DISKON
 
 tambahkan pilihan otomatis di beri diskon dengan kriteria
@@ -427,7 +431,7 @@ tambahkan pilihan otomatis di beri diskon dengan kriteria
   atau input manual diskon
 
 <details type="reasoning" done="true">
-<summary>Berpikir logika dulu sebenera :</summary>
+<summary>Penjelasan :</summary>
 
 Kita akan menambahkan fitur pilihan diskon otomatis berdasarkan total pembelian atau input manual.
 
@@ -464,7 +468,7 @@ Berikut adalah kode yang telah dimodifikasi:
 </details>
 
 <details type="reasoning" done="true">
-<summary>Hasil Implementasinya </summary>
+<summary>Hasil Program : </summary>
 
 Berikut adalah program C++ yang telah diperbarui dengan fitur pilihan diskon otomatis berdasarkan total pembelian atau input manual diskon:
 
@@ -754,7 +758,9 @@ TOTAL YANG HARUS DIBAYAR         990000.00
 
 Program ini memberikan fleksibilitas kepada pengguna untuk memilih sistem diskon yang diinginkan, baik otomatis berdasarkan total pembelian maupun manual sesuai kebutuhan.
 
-## </details>
+</details>
+
+---
 
 ### TAMBAHKAN JIKA TANGGAL TERTENTU ADA DISKON
 
@@ -763,7 +769,7 @@ jadi pilihan diskon tadi tambah diskon kalau tanggal 17 Agustus.
 berikan dulu list tanggal untuk mendapatkan diskon otomatis
 
 <details type="reasoning" done="true" duration="166">
-<summary>Berfikir logika sedikit dulu :</summary>
+<summary>Penjelasan :</summary>
 
 Kita akan menambahkan fitur diskon otomatis berdasarkan tanggal tertentu (misalnya 17 Agustus).
 Langkah-langkah:
@@ -1189,7 +1195,7 @@ Mari kita implementasikan.
 </details>
 
 <details type="reasoning" done="true">
-<summary>Hasil Implementasinya </summary>
+<summary>Hasil Program : </summary>
 
 Berikut adalah program C++ yang telah diperbarui dengan fitur diskon otomatis berdasarkan tanggal 17 Agustus dan sistem diskon ganda:
 
@@ -1554,14 +1560,452 @@ TOTAL YANG HARUS DIBAYAR      5400000.00
    - Menampilkan semua komponen diskon secara terpisah
    - Format mata uang yang jelas
 
+Program ini memberikan fleksibilitas pilihan diskon dengan tambahan diskon spesial di tanggal tertentu (17 Agustus), sehingga pelanggan bisa mendapatkan keuntungan lebih di hari spesial tersebut.
+
 </details>
+
+---
+
+### UBAH BARANG DAN HARGA
+
+Tambahkan fitur mengubah jumlah barang dan harga
+
+<details type="reasoning" done="true">
+<summary>Penjelasan : </summary>
+
+Kita akan menambahkan fitur untuk mengubah jumlah barang dan harga setelah input.
+
+Langkah-langkah:
+
+1. Setelah menampilkan daftar pembelian, beri opsi kepada user untuk mengubah data barang.
+2. User bisa memilih nomor barang yang ingin diubah, kemudian input nama dan harga baru.
+3. Setelah perubahan, update total harga dan tampilkan kembali daftar pembelian.
+4. Kemudian lanjut ke proses diskon seperti sebelumnya.
+
+Perubahan yang akan dilakukan:
+
+- Setelah loop input barang, tampilkan daftar pembelian.
+- Tanyakan apakah user ingin mengubah data barang (y/n).
+- Jika ya, tampilkan daftar barang dengan nomor, lalu minta input nomor barang yang akan diubah.
+- Setelah itu, minta input nama dan harga baru untuk barang tersebut.
+- Update data di vector, hitung ulang total harga.
+- Tampilkan kembali daftar pembelian yang sudah diperbarui.
+- Baru kemudian lanjut ke proses diskon.
+
+Catatan: Kita juga perlu menangani jika user memilih nomor barang yang tidak valid.
+
+</details>
+
+<details type="reasoning" done="true">
+<summary>Hasil Program : </summary>
+
+Berikut adalah program C++ yang telah diperbarui dengan fitur mengubah jumlah barang dan harga setelah input:
+
+```cpp
+#include <iostream>
+#include <iomanip>
+#include <vector>
+#include <string>
+#include <ctime> // Untuk mendapatkan tanggal sistem
+
+using namespace std;
+
+void tampilkanDaftarBarang(const vector<string>& namaBarang, const vector<double>& hargaBarang) {
+    cout << left << setw(5) << "No" << setw(25) << "Nama Barang" << right << setw(15) << "Harga (Rp)" << endl;
+    cout << "--------------------------------------" << endl;
+
+    for (size_t i = 0; i < namaBarang.size(); ++i) {
+        cout << left << setw(5) << i + 1
+             << setw(25) << namaBarang[i]
+             << right << setw(15) << fixed << setprecision(2) << hargaBarang[i] << endl;
+    }
+}
+
+int main() {
+    vector<string> namaBarang;
+    vector<double> hargaBarang;
+    int jumlahBarang;
+    double totalHarga = 0, persentaseDiskon, jumlahDiskon, hargaSetelahDiskon;
+    int pilihanDiskon;
+    char ubahData;
+
+    // Mendapatkan tanggal sistem
+    time_t now = time(0);
+    tm *ltm = localtime(&now);
+    int hari = ltm->tm_mday;
+    int bulan = 1 + ltm->tm_mon; // Bulan dimulai dari 0
+    int tahun = 1900 + ltm->tm_year;
+
+    cout << "======================================" << endl;
+    cout << "      PROGRAM KASIR DISKON           " << endl;
+    cout << "======================================" << endl;
+
+    // Input jumlah barang
+    cout << "Masukkan jumlah barang yang dibeli: ";
+    cin >> jumlahBarang;
+
+    // Validasi jumlah barang
+    if (jumlahBarang <= 0) {
+        cout << "\nError: Jumlah barang harus lebih dari 0!" << endl;
+        return 1;
+    }
+
+    // Input detail barang
+    cin.ignore(); // Membersihkan buffer input
+    for (int i = 0; i < jumlahBarang; ++i) {
+        string nama;
+        double harga;
+
+        cout << "\nBarang ke-" << i + 1 << ":" << endl;
+        cout << "Nama barang: ";
+        getline(cin, nama);
+
+        cout << "Harga barang (Rp): ";
+        cin >> harga;
+        cin.ignore(); // Membersihkan buffer input
+
+        // Validasi harga barang
+        if (harga <= 0) {
+            cout << "\nError: Harga barang harus lebih dari 0!" << endl;
+            return 1;
+        }
+
+        namaBarang.push_back(nama);
+        hargaBarang.push_back(harga);
+        totalHarga += harga;
+    }
+
+    // Tampilkan daftar pembelian
+    cout << "\n======================================" << endl;
+    cout << "          DAFTAR PEMBELIAN           " << endl;
+    cout << "======================================" << endl;
+    tampilkanDaftarBarang(namaBarang, hargaBarang);
+
+    cout << "--------------------------------------" << endl;
+    cout << left << setw(30) << "TOTAL PEMBELIAN"
+         << right << setw(15) << fixed << setprecision(2) << totalHarga << endl;
+    cout << "======================================" << endl;
+
+    // Opsi untuk mengubah data barang
+    cout << "\nApakah Anda ingin mengubah data barang? (y/n): ";
+    cin >> ubahData;
+
+    if (ubahData == 'y' || ubahData == 'Y') {
+        int nomorBarang;
+        bool lanjutUbah = true;
+
+        while (lanjutUbah) {
+            cout << "\nMasukkan nomor barang yang ingin diubah (1-" << jumlahBarang << "): ";
+            cin >> nomorBarang;
+
+            // Validasi nomor barang
+            if (nomorBarang < 1 || nomorBarang > jumlahBarang) {
+                cout << "Error: Nomor barang tidak valid!" << endl;
+                continue;
+            }
+
+            // Kurangi total harga dengan harga barang lama
+            totalHarga -= hargaBarang[nomorBarang - 1];
+
+            // Input data baru
+            string namaBaru;
+            double hargaBaru;
+
+            cin.ignore(); // Membersihkan buffer input
+            cout << "Nama baru untuk barang: ";
+            getline(cin, namaBaru);
+
+            cout << "Harga baru untuk barang (Rp): ";
+            cin >> hargaBaru;
+
+            // Validasi harga baru
+            if (hargaBaru <= 0) {
+                cout << "Error: Harga barang harus lebih dari 0!" << endl;
+                return 1;
+            }
+
+            // Update data
+            namaBarang[nomorBarang - 1] = namaBaru;
+            hargaBarang[nomorBarang - 1] = hargaBaru;
+            totalHarga += hargaBaru;
+
+            // Tampilkan daftar pembelian yang sudah diperbarui
+            cout << "\n======================================" << endl;
+            cout << "      DAFTAR PEMBELIAN (DIPERBARUI)     " << endl;
+            cout << "======================================" << endl;
+            tampilkanDaftarBarang(namaBarang, hargaBarang);
+
+            cout << "--------------------------------------" << endl;
+            cout << left << setw(30) << "TOTAL PEMBELIAN"
+                 << right << setw(15) << fixed << setprecision(2) << totalHarga << endl;
+            cout << "======================================" << endl;
+
+            // Tanyakan apakah ingin mengubah data lagi
+            cout << "\nApakah ingin mengubah data barang lagi? (y/n): ";
+            cin >> ubahData;
+            if (ubahData != 'y' && ubahData != 'Y') {
+                lanjutUbah = false;
+            }
+        }
+    }
+
+    // Tampilkan daftar tanggal diskon otomatis
+    cout << "\n======================================" << endl;
+    cout << "    DAFTAR TANGGAL DISKON OTOMATIS   " << endl;
+    cout << "======================================" << endl;
+    cout << "1. 17 Agustus -> Diskon 5% tambahan" << endl;
+    cout << "======================================" << endl;
+
+    // Cek apakah hari ini 17 Agustus
+    bool isTanggalDiskon = (hari == 17 && bulan == 8);
+    if (isTanggalDiskon) {
+        cout << "\nINFO: Hari ini 17 Agustus " << tahun << "!" << endl;
+        cout << "Anda akan mendapatkan diskon tambahan 5%" << endl;
+    }
+
+    // Pilihan jenis diskon
+    cout << "\nPilih jenis diskon:" << endl;
+    cout << "1. Otomatis (berdasarkan total pembelian)" << endl;
+    cout << "2. Manual (input persentase)" << endl;
+    cout << "Pilihan (1/2): ";
+    cin >> pilihanDiskon;
+
+    // Validasi pilihan
+    if (pilihanDiskon != 1 && pilihanDiskon != 2) {
+        cout << "\nError: Pilihan tidak valid!" << endl;
+        return 1;
+    }
+
+    double diskonUtama = 0; // Diskon dari pilihan (otomatis/manual)
+    string jenisDiskon;
+
+    if (pilihanDiskon == 1) {
+        // Diskon otomatis berdasarkan total pembelian
+        if (totalHarga >= 3000000) {
+            persentaseDiskon = 7;
+        } else if (totalHarga >= 2000000) {
+            persentaseDiskon = 5;
+        } else if (totalHarga >= 1000000) {
+            persentaseDiskon = 3;
+        } else {
+            persentaseDiskon = 0;
+        }
+
+        diskonUtama = totalHarga * (persentaseDiskon / 100);
+        jenisDiskon = "Otomatis";
+        cout << "\nDiskon otomatis diterapkan: " << persentaseDiskon << "%" << endl;
+    } else {
+        // Diskon manual
+        cout << "\nMasukkan persentase diskon (%): ";
+        cin >> persentaseDiskon;
+
+        // Validasi diskon manual
+        if (persentaseDiskon < 0) {
+            cout << "\nError: Diskon tidak boleh negatif!" << endl;
+            return 1;
+        }
+
+        diskonUtama = totalHarga * (persentaseDiskon / 100);
+        jenisDiskon = "Manual";
+    }
+
+    // Hitung diskon tambahan jika tanggal 17 Agustus
+    double diskonTambahan = 0;
+    if (isTanggalDiskon) {
+        diskonTambahan = totalHarga * 0.05; // 5% dari total pembelian
+    }
+
+    // Total diskon
+    jumlahDiskon = diskonUtama + diskonTambahan;
+
+    // Validasi agar total diskon tidak melebihi total pembelian
+    if (jumlahDiskon > totalHarga) {
+        jumlahDiskon = totalHarga;
+    }
+
+    hargaSetelahDiskon = totalHarga - jumlahDiskon;
+
+    // Tampilkan hasil akhir
+    cout << "\n======================================" << endl;
+    cout << "             RINCIAN DISKON           " << endl;
+    cout << "======================================" << endl;
+    cout << left << setw(25) << "Total Pembelian"
+         << right << setw(15) << fixed << setprecision(2) << totalHarga << endl;
+    cout << left << setw(25) << "Diskon " + jenisDiskon
+         << right << setw(15) << diskonUtama << endl;
+
+    if (isTanggalDiskon) {
+        cout << left << setw(25) << "Diskon 17 Agustus (5%)"
+             << right << setw(15) << diskonTambahan << endl;
+    }
+
+    cout << "--------------------------------------" << endl;
+    cout << left << setw(25) << "Total Diskon"
+         << right << setw(15) << jumlahDiskon << endl;
+    cout << left << setw(25) << "TOTAL YANG HARUS DIBAYAR"
+         << right << setw(15) << hargaSetelahDiskon << endl;
+    cout << "======================================" << endl;
+
+    return 0;
+}
+```
+
+### Fitur Baru: Mengubah Data Barang
+
+Program sekarang memiliki fitur untuk mengubah data barang setelah input awal. Berikut cara kerjanya:
+
+1. **Setelah Input Awal**:
+
+   - Program menampilkan daftar pembelian dengan total harga
+   - Menanyakan: "Apakah Anda ingin mengubah data barang? (y/n)"
+
+2. **Proses Perubahan**:
+
+   - Jika user memilih 'y'/'Y', program meminta:
+     - Nomor barang yang ingin diubah (1 sampai jumlah barang)
+     - Nama baru untuk barang tersebut
+     - Harga baru untuk barang tersebut
+   - Program memvalidasi input harga baru (harus > 0)
+   - Update data di vector dan hitung ulang total harga
+   - Tampilkan kembali daftar pembelian yang sudah diperbarui
+
+3. **Perubahan Berulang**:
+   - Setelah perubahan, program menanyakan: "Apakah ingin mengubah data barang lagi? (y/n)"
+   - User bisa melakukan perubahan berkali-kali sebelum melanjutkan ke proses diskon
+
+### Contoh Penggunaan dengan Fitur Perubahan:
+
+```
+======================================
+      PROGRAM KASIR DISKON
+======================================
+Masukkan jumlah barang yang dibeli: 3
+
+Barang ke-1:
+Nama barang: Laptop
+Harga barang (Rp): 8500000
+
+Barang ke-2:
+Nama barang: Mouse
+Harga barang (Rp): 250000
+
+Barang ke-3:
+Nama barang: Keyboard
+Harga barang (Rp): 450000
+
+======================================
+          DAFTAR PEMBELIAN
+======================================
+No   Nama Barang              Harga (Rp)
+--------------------------------------
+1    Laptop                     8500000.00
+2    Mouse                       250000.00
+3    Keyboard                    450000.00
+--------------------------------------
+TOTAL PEMBELIAN                 9200000.00
+======================================
+
+Apakah Anda ingin mengubah data barang? (y/n): y
+
+Masukkan nomor barang yang ingin diubah (1-3): 2
+Nama baru untuk barang: Mouse Wireless
+Harga baru untuk barang (Rp): 350000
+
+======================================
+      DAFTAR PEMBELIAN (DIPERBARUI)
+======================================
+No   Nama Barang              Harga (Rp)
+--------------------------------------
+1    Laptop                     8500000.00
+2    Mouse Wireless              350000.00
+3    Keyboard                    450000.00
+--------------------------------------
+TOTAL PEMBELIAN                 9300000.00
+======================================
+
+Apakah ingin mengubah data barang lagi? (y/n): y
+
+Masukkan nomor barang yang ingin diubah (1-3): 1
+Nama baru untuk barang: Laptop Gaming
+Harga baru untuk barang (Rp): 12000000
+
+======================================
+      DAFTAR PEMBELIAN (DIPERBARUI)
+======================================
+No   Nama Barang              Harga (Rp)
+--------------------------------------
+1    Laptop Gaming              12000000.00
+2    Mouse Wireless              350000.00
+3    Keyboard                    450000.00
+--------------------------------------
+TOTAL PEMBELIAN                12800000.00
+======================================
+
+Apakah ingin mengubah data barang lagi? (y/n): n
+
+======================================
+    DAFTAR TANGGAL DISKON OTOMATIS
+======================================
+1. 17 Agustus -> Diskon 5% tambahan
+======================================
+
+Pilih jenis diskon:
+1. Otomatis (berdasarkan total pembelian)
+2. Manual (input persentase)
+Pilihan (1/2): 1
+
+Diskon otomatis diterapkan: 7%
+
+======================================
+             RINCIAN DISKON
+======================================
+Total Pembelian               12800000.00
+Diskon Otomatis                896000.00
+--------------------------------------
+Total Diskon                  896000.00
+TOTAL YANG HARUS DIBAYAR     11904000.00
+======================================
+```
+
+### Fitur Tambahan dalam Program:
+
+1. **Fungsi tampilkanDaftarBarang**:
+
+   - Fungsi khusus untuk menampilkan daftar barang
+   - Mengurangi duplikasi kode
+
+2. **Validasi Input Lengkap**:
+
+   - Validasi nomor barang saat perubahan
+   - Validasi harga baru (harus > 0)
+   - Validasi pilihan lanjut perubahan
+
+3. **Update Otomatis Total Harga**:
+
+   - Saat mengubah harga barang, total harga dihitung ulang otomatis
+   - Mengurangi harga lama dan menambah harga baru
+
+4. **Tampilan Jelas**:
+
+   - Menampilkan "DAFTAR PEMBELIAN (DIPERBARUI)" setelah perubahan
+   - Format tabel yang konsisten
+
+5. **Fleksibilitas**:
+   - User bisa mengubah nama dan harga barang secara bersamaan
+   - Bisa melakukan perubahan berkali-kali sebelum melanjutkan
+
+Program ini sekarang lebih lengkap dengan fitur perubahan data barang yang memungkinkan user untuk memperbaiki kesalahan input atau melakukan perubahan sebelum proses perhitungan diskon.
+
+</details>
+
+---
 
 ### BATALKAN PROSES TRANSAKSI
 
 tambahkan fitur untuk di lanjutkan atau di batalkan proses transaksi.
 
 <details type="reasoning" done="true">
-<summary>Mari berlogika dulu: </summary>
+<summary>Penjelasan : </summary>
 
 Kita akan menambahkan fitur untuk melanjutkan atau membatalkan transaksi setelah semua input dan perubahan data selesai.
 
@@ -1586,7 +2030,7 @@ Mari kita implementasikan.
 </details>
 
 <details type="reasoning" done="true">
-<summary>Hasil Implementasinya </summary>
+<summary>Hasil Program : </summary>
 Berikut adalah program C++ yang telah diperbarui dengan fitur konfirmasi untuk melanjutkan atau membatalkan transaksi:
 
 ```cpp
@@ -2052,12 +2496,14 @@ Program ini sekarang memiliki alur transaksi yang lengkap dengan kontrol penuh k
 
 </details>
 
+---
+
 ### SIMPAN HASIL TRANSAKSI
 
 Tambahkan fitur jika tidak di batalkan maka apakah data di simpan
 
 <details type="reasoning" done="true">
-<summary>Mari berlogika dulu: </summary>
+<summary>Penjelasan : </summary>
 
 Kita akan menambahkan fitur untuk menyimpan data transaksi jika tidak dibatalkan.
 Kita bisa menggunakan file untuk menyimpan data. Data yang akan disimpan meliputi:
@@ -2136,7 +2582,7 @@ Mari kita tambahkan fitur ini.
 </details>
 
 <details type="reasoning" done="true">
-<summary>Hasil Implementasi </summary>
+<summary>Hasil Program : </summary>
 Berikut adalah program C++ yang telah diperbarui dengan fitur penyimpanan data transaksi jika tidak dibatalkan:
 
 ```cpp

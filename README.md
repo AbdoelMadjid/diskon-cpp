@@ -29,21 +29,24 @@ buatkan program CPP untuk aplikasi diskon
 
 <details type="reasoning" done="true" duration="3">
 <summary>Thought for 3 seconds</summary>
-> Kita akan membuat program C++ sederhana untuk menghitung diskon.
->  Program ini akan meminta input dari pengguna berupa harga asli dan persentase diskon.
->  Kemudian, program akan menghitung harga setelah diskon dan menampilkannya.
-> 
->  Langkah-langkah:
->  1. Deklarasikan variabel yang dibutuhkan: harga asli, persentase diskon, dan harga setelah diskon.
->  2. Mintalah pengguna untuk memasukkan harga asli.
->  3. Mintalah pengguna untuk memasukkan persentase diskon.
->  4. Hitung harga setelah diskon: harga asli - (harga asli * (persentase diskon / 100)).
->  5. Tampilkan harga setelah diskon.
-> 
->  Kita juga bisa menambahkan validasi input jika diperlukan, misalnya memastikan harga dan diskon tidak negatif.
->  Tapi untuk kesederhanaan, kita asumsikan input yang valid.
-> 
->  Mari kita tulis kode tersebut.
+Kita akan membuat program C++ sederhana untuk menghitung diskon.  
+Program ini akan meminta input dari pengguna berupa harga asli dan persentase diskon.  
+Kemudian, program akan menghitung harga setelah diskon dan menampilkannya.
+
+### Langkah-langkah:
+
+1. Deklarasikan variabel yang dibutuhkan: harga asli, persentase diskon, dan harga setelah diskon.
+2. Mintalah pengguna untuk memasukkan harga asli.
+3. Mintalah pengguna untuk memasukkan persentase diskon.
+4. Hitung harga setelah diskon:  
+   `hargaSetelahDiskon = hargaAsli - (hargaAsli * (persentaseDiskon / 100))`
+5. Tampilkan harga setelah diskon.
+
+Kita juga bisa menambahkan validasi input jika diperlukan, misalnya memastikan harga dan diskon tidak negatif.  
+Tapi untuk kesederhanaan, kita asumsikan input yang valid.
+
+Mari kita tulis kode tersebut.
+
 </details>
 Berikut adalah program C++ sederhana untuk menghitung diskon berdasarkan harga asli dan persentase diskon yang dimasukkan pengguna:
 

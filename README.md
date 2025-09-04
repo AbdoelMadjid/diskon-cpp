@@ -166,7 +166,7 @@ Harga Akhir      : Rp 212500.00
 
 </details>
 
----
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### TAMBAHKAN NAMA BARANG DAN HARGA
 
@@ -427,7 +427,7 @@ Program ini menggabungkan fitur input barang dengan perhitungan diskon dalam sat
 
 </details>
 
----
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### PILIHAN DISKON
 
@@ -766,7 +766,7 @@ Program ini memberikan fleksibilitas kepada pengguna untuk memilih sistem diskon
 
 </details>
 
----
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### JIKA TANGGAL TERTENTU ADA DISKON
 
@@ -1184,7 +1184,9 @@ Dan batasi total diskon tidak melebihi totalHarga.
 
 Sekarang, kita ubah program.
 
-Catatan: Untuk testing, kita hardcode tanggal 17 Agustus.
+**Catatan:**
+
+Untuk testing, kita hardcode tanggal 17 Agustus.
 Jika ingin menggunakan tanggal sistem, bisa menggunakan <ctime> dan struct tm.
 
 Tapi, untuk kesederhanaan, kita hardcode.
@@ -1561,7 +1563,7 @@ Program ini memberikan fleksibilitas pilihan diskon dengan tambahan diskon spesi
 
 </details>
 
----
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### UBAH BARANG DAN HARGA
 
@@ -1988,7 +1990,7 @@ Program ini sekarang lebih lengkap dengan fitur perubahan data barang yang memun
 
 </details>
 
----
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### BATALKAN PROSES TRANSAKSI
 
@@ -2479,7 +2481,7 @@ Program ini sekarang memiliki alur transaksi yang lengkap dengan kontrol penuh k
 
 </details>
 
----
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### SIMPAN HASIL TRANSAKSI
 

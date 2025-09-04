@@ -41,9 +41,6 @@
 
 ### APLIKASI DISKON AWAL
 
-<details type="reasoning" done="true">
-<summary>Penjelasan :</summary>
-
 Kita akan membuat program C++ sederhana untuk menghitung diskon.  
 Program ini akan meminta input dari pengguna berupa harga asli dan persentase diskon.  
 Kemudian, program akan menghitung harga setelah diskon dan menampilkannya.
@@ -61,8 +58,6 @@ Kita juga bisa menambahkan validasi input jika diperlukan, misalnya memastikan h
 Tapi untuk kesederhanaan, kita asumsikan input yang valid.
 
 Mari kita tulis kode tersebut.
-
-</details>
 
 <details type="reasoning" done="true">
 <summary>Hasil Program :</summary>
@@ -175,9 +170,6 @@ Harga Akhir      : Rp 212500.00
 
 ### TAMBAHKAN NAMA BARANG DAN HARGA
 
-<details type="reasoning" done="true">
-<summary>Penjelasan :</summary>
-
 Kita akan memodifikasi program sebelumnya dengan menambahkan fitur:
 
 1. Memasukkan beberapa barang (nama barang dan harga per barang)
@@ -217,8 +209,6 @@ Kita akan memodifikasi program sebelumnya dengan menambahkan fitur:
 Kita juga akan menambahkan validasi untuk harga barang (harus positif).
 
 Mari kita buat programnya.
-
-</details>
 
 <details type="reasoning" done="true">
 <summary>Hasil Program : </summary>
@@ -441,16 +431,15 @@ Program ini menggabungkan fitur input barang dengan perhitungan diskon dalam sat
 
 ### PILIHAN DISKON
 
-**Catatan :** pilihan otomatis di beri diskon dengan kriteria
+**Catatan Maslah :**
+
+pilihan otomatis di beri diskon dengan kriteria
 
 - 3.000.000 diskon 7 %
 - 2.000.000 diskon 5 %
 - 1.000.000 diskon 3 %
 
 atau input manual diskon
-
-<details type="reasoning" done="true">
-<summary>Penjelasan :</summary>
 
 Kita akan menambahkan fitur pilihan diskon otomatis berdasarkan total pembelian atau input manual.
 
@@ -483,8 +472,6 @@ Kita akan memodifikasi bagian setelah menampilkan total pembelian.
 **Catatan:** Kita tetap memvalidasi input manual agar tidak negatif.
 
 Berikut adalah kode yang telah dimodifikasi:
-
-</details>
 
 <details type="reasoning" done="true">
 <summary>Hasil Program : </summary>
@@ -782,14 +769,6 @@ Program ini memberikan fleksibilitas kepada pengguna untuk memilih sistem diskon
 ---
 
 ### JIKA TANGGAL TERTENTU ADA DISKON
-
-**Catatan :**
-
-jika tanggal hari ini tanggal 17 Agustus, maka di beri diskon 5 %,
-jadi pilihan diskon sebelumnya lalu di tambah diskon kalau tanggal 17 Agustus.
-
-<details type="reasoning" done="true" duration="166">
-<summary>Penjelasan :</summary>
 
 Kita akan menambahkan fitur diskon otomatis berdasarkan tanggal tertentu (misalnya 17 Agustus).
 Langkah-langkah:
@@ -1212,8 +1191,6 @@ Tapi, untuk kesederhanaan, kita hardcode.
 
 Mari kita implementasikan.
 
-</details>
-
 <details type="reasoning" done="true">
 <summary>Hasil Program : </summary>
 
@@ -1588,19 +1565,16 @@ Program ini memberikan fleksibilitas pilihan diskon dengan tambahan diskon spesi
 
 ### UBAH BARANG DAN HARGA
 
-<details type="reasoning" done="true">
-<summary>Penjelasan : </summary>
-
 Kita akan menambahkan fitur untuk mengubah jumlah barang dan harga setelah input.
 
-Langkah-langkah:
+**Langkah-langkah:**
 
 1. Setelah menampilkan daftar pembelian, beri opsi kepada user untuk mengubah data barang.
 2. User bisa memilih nomor barang yang ingin diubah, kemudian input nama dan harga baru.
 3. Setelah perubahan, update total harga dan tampilkan kembali daftar pembelian.
 4. Kemudian lanjut ke proses diskon seperti sebelumnya.
 
-Perubahan yang akan dilakukan:
+**Perubahan yang akan dilakukan:**
 
 - Setelah loop input barang, tampilkan daftar pembelian.
 - Tanyakan apakah user ingin mengubah data barang (y/n).
@@ -1610,9 +1584,7 @@ Perubahan yang akan dilakukan:
 - Tampilkan kembali daftar pembelian yang sudah diperbarui.
 - Baru kemudian lanjut ke proses diskon.
 
-Catatan: Kita juga perlu menangani jika user memilih nomor barang yang tidak valid.
-
-</details>
+**Catatan:** Kita juga perlu menangani jika user memilih nomor barang yang tidak valid.
 
 <details type="reasoning" done="true">
 <summary>Hasil Program : </summary>
@@ -2020,12 +1992,9 @@ Program ini sekarang lebih lengkap dengan fitur perubahan data barang yang memun
 
 ### BATALKAN PROSES TRANSAKSI
 
-<details type="reasoning" done="true">
-<summary>Penjelasan : </summary>
-
 Kita akan menambahkan fitur untuk melanjutkan atau membatalkan transaksi setelah semua input dan perubahan data selesai.
 
-Langkah-langkah:
+**Langkah-langkah:**
 
 1. Setelah proses perubahan data (jika ada) dan sebelum proses diskon, kita akan tanyakan kepada user apakah ingin melanjutkan transaksi atau membatalkan.
 2. Jika user membatalkan, maka program akan berhenti dan menampilkan pesan pembatalan.
@@ -2033,7 +2002,7 @@ Langkah-langkah:
 
 Kita juga bisa menambahkan konfirmasi sebelum menyelesaikan transaksi setelah diskon dihitung, tetapi sesuai permintaan, kita fokus pada setelah input data.
 
-Perubahan:
+**Perubahan:**
 
 - Setelah proses perubahan data (jika user tidak ingin mengubah lagi), kita akan tanyakan: "Apakah Anda ingin melanjutkan transaksi? (y/n): "
 - Jika user memilih 'n' atau 'N', maka program akan berhenti dan menampilkan pesan pembatalan.
@@ -2042,8 +2011,6 @@ Perubahan:
 Kita juga bisa menambahkan konfirmasi di akhir sebelum mencetak struk, tetapi permintaan hanya untuk lanjut/batal setelah input.
 
 Mari kita implementasikan.
-
-</details>
 
 <details type="reasoning" done="true">
 <summary>Hasil Program : </summary>
@@ -2516,9 +2483,6 @@ Program ini sekarang memiliki alur transaksi yang lengkap dengan kontrol penuh k
 
 ### SIMPAN HASIL TRANSAKSI
 
-<details type="reasoning" done="true">
-<summary>Penjelasan : </summary>
-
 Kita akan menambahkan fitur untuk menyimpan data transaksi jika tidak dibatalkan.
 Kita bisa menggunakan file untuk menyimpan data. Data yang akan disimpan meliputi:
 
@@ -2530,7 +2494,7 @@ Kita bisa menggunakan file untuk menyimpan data. Data yang akan disimpan meliput
 
 Kita akan menggunakan file teks (misal: transaksi.txt) untuk menyimpan setiap transaksi.
 
-Langkah-langkah:
+**Langkah-langkah:**
 
 1. Setelah konfirmasi akhir (setelah user memilih 'y' untuk menyelesaikan transaksi), kita akan menyimpan data ke file.
 2. Format penyimpanan bisa berupa:
@@ -2553,7 +2517,7 @@ Namun, karena permintaan hanya "apakah data di simpan", kita bisa langsung menyi
 
 Tapi untuk lebih interaktif, kita bisa tanyakan dulu apakah user ingin menyimpan data transaksi.
 
-Perubahan:
+**Perubahan:**
 
 - Setelah konfirmasi akhir (sebelum cetak struk) kita tanyakan: "Apakah Anda ingin menyimpan data transaksi? (y/n)"
 - Jika ya, maka simpan ke file, lalu cetak struk.
@@ -2561,11 +2525,11 @@ Perubahan:
 
 Kita akan menggunakan ofstream untuk menulis ke file.
 
-Catatan: File akan disimpan di direktori yang sama dengan program, dengan nama "transaksi.txt".
+**Catatan:** File akan disimpan di direktori yang sama dengan program, dengan nama "transaksi.txt".
 
 Untuk menghindari penimpaan, kita bisa menambahkan timestamp di nama file, tapi untuk sederhana, kita gunakan append (menambahkan di akhir file).
 
-Format file:
+**Format file:**
 
 ```console
   ====================== TRANSAKSI ======================
@@ -2585,15 +2549,13 @@ Format file:
 
 Kita akan menulis dalam format yang mirip dengan tampilan di console.
 
-Implementasi:
+**Implementasi:**
 
 - Tambahkan include `<fstream>`
 - Setelah konfirmasi akhir (setelah user memilih 'y' untuk menyelesaikan transaksi), tanyakan apakah ingin menyimpan.
 - Jika iya, buka file dengan mode append (`ios::app`) dan tulis data.
 
 Mari kita tambahkan fitur ini.
-
-</details>
 
 <details type="reasoning" done="true">
 <summary>Hasil Program : </summary>
